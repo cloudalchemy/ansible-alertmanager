@@ -1,0 +1,14 @@
+---
+
+- name: service reenable
+  command: systemctl reenable alertmanager.service
+
+- name: restart alertmanager
+  service:
+    name: alertmanager
+    state: restarted
+
+- name: reload alertmanager
+  service:
+    name: alertmanager
+    state: reloaded

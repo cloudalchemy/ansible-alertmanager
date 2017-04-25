@@ -1,0 +1,44 @@
+---
+
+alertmanager_version: 0.5.1
+alertmanager_user: prometheus
+alertmanager_group: prometheus
+
+alertmanager_release_name: "alertmanager-{{ alertmanager_version }}.linux-amd64"
+
+alertmanager_root_dir: /opt/prometheus/alertmanager
+alertmanager_dist_dir: "{{ alertmanager_root_dir }}/dist"
+alertmanager_bin_dir: "{{ alertmanager_root_dir }}/current"
+
+alertmanager_config_dir: /etc/prometheus/alertmanager
+alertmanager_templates_dir: "{{ alertmanager_config_dir }}/templates"
+alertmanager_pid_path: /var/run/prometheus-alertmanager.pid
+alertmanager_db_dir: /var/lib/prometheus/alertmanager
+alertmanager_log_dir: /var/log/prometheus
+
+alertmanager_listen_address: ':9093'
+alertmanager_external_url: 'http://localhost:9093/'
+
+alertmanager_templates_files: []
+
+alertmanager_resolve_timeout: 5m
+
+# SMTP default params
+alertmanager_smtp_from: ''
+alertmanager_smtp_smarthost: ''
+alertmanager_smtp_auth_username: ''
+alertmanager_smtp_auth_password: ''
+alertmanager_smtp_auth_secret: ''
+
+# Default values you can see here -> https://prometheus.io/docs/alerting/configuration/
+alertmanager_slack_api_url: ''
+alertmanager_pagerduty_url: ''
+alertmanager_opsgenie_api_host: ''
+alertmanager_hipchat_url: ''
+alertmanager_hipchat_auth_token: ''
+
+alertmanager_config_flags:
+  'config.file': '{{ alertmanager_config_dir }}/alertmanager.yml'
+  'storage.path': '{{ alertmanager_db_dir }}'
+  'web.listen-address': '{{ alertmanager_listen_address }}'
+  'web.external-url': '{{ alertmanager_external_url }}'

@@ -1,0 +1,51 @@
+global:
+  # ResolveTimeout is the time after which an alert is declared resolved
+  # if it has not been updated.
+  resolve_timeout: {{ prometheus_alertmanager_resolve_timeout }}
+
+{% if prometheus_alertmanager_smtp_from != '' %}
+  # The default SMTP From header field.
+  smtp_from: {{ prometheus_alertmanager_smtp_from }}
+{% endif %}
+{% if prometheus_alertmanager_smtp_smarthost != '' %}
+  # The default SMTP smarthost used for sending emails.
+  smtp_smarthost: {{ prometheus_alertmanager_smtp_smarthost }}
+{% endif %}
+{% if prometheus_alertmanager_smtp_auth_username != '' %}
+  # SMTP authentication information.
+  smtp_auth_username: {{ prometheus_alertmanager_smtp_auth_username }}
+  smtp_auth_password: {{ prometheus_alertmanager_smtp_auth_password }}
+{% endif %}
+{% if prometheus_alertmanager_smtp_auth_secret != '' %}
+  smtp_auth_secret: {{ prometheus_alertmanager_smtp_auth_secret }}
+{% endif %}
+
+{% if prometheus_alertmanager_slack_api_url != '' %}
+  # The API URL to use for Slack notifications.
+  slack_api_url: {{ prometheus_alertmanager_slack_api_url }}
+{% endif %}
+
+{% if prometheus_alertmanager_pagerduty_url != '' %}
+  # The API URL to use for Slack notifications.
+  pagerduty_url: {{ prometheus_alertmanager_pagerduty_url }}
+{% endif %}
+{% if prometheus_alertmanager_opsgenie_api_host != '' %}
+  # The API URL to use for Slack notifications.
+  opsgenie_api_host: {{ prometheus_alertmanager_opsgenie_api_host }}
+{% endif %}
+{% if prometheus_alertmanager_hipchat_url != '' %}
+  # The API URL to use for Slack notifications.
+  hipchat_url: {{ prometheus_alertmanager_hipchat_url }}
+{% endif %}
+{% if prometheus_alertmanager_hipchat_auth_token != '' %}
+  # The API URL to use for Slack notifications.
+  hipchat_auth_token: {{ prometheus_alertmanager_hipchat_auth_token }}
+{% endif %}
+
+# Files from which custom notification template definitions are read.
+# The last component may use a wildcard matcher, e.g. 'templates/*.tmpl'.
+templates:
+  {% for dest in prometheus_alertmanager_templates_files %}
+  - {{ prometheus_alertmanager_templates_dir }}/{{ dest }}
+  {% endfor %}
+

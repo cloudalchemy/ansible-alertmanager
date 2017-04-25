@@ -1,0 +1,122 @@
+---
+#- name: Gather variables for each operating system
+#  include_vars: "{{ item }}"
+#  with_first_found:
+#    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+#    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+#    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+#    - "{{ ansible_distribution | lower }}.yml"
+#    - "{{ ansible_os_family | lower }}.yml"
+#  tags:
+#    - always
+
+
+- name: install needed packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl
+    - tar
+    - bzip2
+
+- name: create alertmanager system group
+  group:
+    name: "{{ alertmanager_group }}"
+    system: yes
+    state: present
+
+- name: create alertmanager system user
+  user:
+    name: "{{ alertmanager_user }}"
+    system: yes
+    shell: "/sbin/nologin"
+    group: "{{ alertmanager_group }}"
+    createhome: no
+
+- name: create alertmanager directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ alertmanager_user }}"
+    group: "{{ alertmanager_group }}"
+    mode: 0755
+  with_items:
+    - "{{ alertmanager_root_dir }}"
+    - "{{ alertmanager_dist_dir }}"
+    - "{{ alertmanager_config_dir }}"
+    - "{{ alertmanager_templates_dir }}"
+    - "{{ alertmanager_config_dir }}/conf.d"
+    - "{{ alertmanager_db_dir }}"
+    - "{{ alertmanager_log_dir }}"
+
+- name: download alertmanager binary to local folder
+  become: no
+  get_url:
+    url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/{{ alertmanager_release_name }}.tar.gz"
+    dest: /tmp/{{ alertmanager_release_name }}.tar.gz
+    validate_certs: no
+#    force: true
+  run_once: true
+  delegate_to: localhost
+
+- name: propagate alertmanager binary
+  copy:
+   src: /tmp/{{ alertmanager_release_name }}.tar.gz
+   dest: "{{ alertmanager_dist_dir }}"
+
+- name: unarchive binary tarball
+  unarchive:
+    copy: no
+    src: "{{ alertmanager_dist_dir }}/{{ alertmanager_release_name }}.tar.gz"
+    dest: "{{ alertmanager_dist_dir }}"
+    creates: "{{ alertmanager_dist_dir }}/{{ alertmanager_release_name }}/alertmanager"
+  register: alertmanager_updated
+  notify:
+    - restart alertmanager
+
+- name: update group and owner for files
+  file:
+    path: "{{ alertmanager_release_name }}"
+    state: directory
+    recurse: yes
+    owner: "{{ alertmanager_user}}"
+    group: "{{ alertmanager_group }}"
+  when: alertmanager_updated | changed
+  
+- name: create symlink to the current release
+  file:
+    src: "{{ alertmanager_dist_dir }}/{{ alertmanager_release_name }}"
+    path: "{{ alertmanager_root_dir }}/current"
+    state: link
+
+- name: create systemd service unit
+  template:
+    src: etc/systemd/system/alertmanager.service.j2
+    dest: /etc/systemd/system/alertmanager.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - service reenable
+    - restart alertmanager
+    
+- name: ensure alertmanager service is enabled
+  service:
+    name: alertmanager
+    enabled: yes
+
+- name: copy templates config files from playbook directory
+  copy:
+    src: "{{ playbook_dir }}/alertmanager.yml"
+    dest: "{{ alertmanager_config_dir }}"
+    owner: "{{ alertmanager_user }}"
+    group: "{{ alertmanager_group }}"
+    mode: 0644
+  notify:
+    - reload alertmanager
+
+  #- name: include alertmanager configuration
+  #include: configuration.yml
+  #tags: ['alertmanager-configuration']
+

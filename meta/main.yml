@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Roman Demachkovych
+  description: Deploy Prometheus Alertmanager service
+  company: Sointeractive
+  min_ansible_version: 1.9
+  platforms:
+   - name: EL
+     versions:
+       - all
+   - name: Ubuntu
+     versions:
+       - 16.04
+  galaxy_tags:
+   - monitorint
+   - alerting
+
+#dependencies:
+#  - { role: username.common }
+
