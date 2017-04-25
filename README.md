@@ -10,20 +10,33 @@ All needed packages will be installed with this role.
 
 Available main variables are listed below, along with default values:
 ```yaml
-prometheus_alertmanager_version: 0.3.0
+alertmanager_version: 0.5.1
+alertmanager_user: prometheus
+alertmanager_group: prometheus
 
-prometheus_alertmanager_user: prometheus
-prometheus_alertmanager_group: prometheus
+alertmanager_release_name: "alertmanager-{{ alertmanager_version }}.linux-amd64"
 
-prometheus_alertmanager_root_dir: /opt/prometheus/alertmanager
-prometheus_alertmanager_templates_files: []
-prometheus_alertmanager_resolve_timeout: 5m
+alertmanager_root_dir: /opt/prometheus/alertmanager
+alertmanager_dist_dir: "{{ alertmanager_root_dir }}/dist"
+alertmanager_bin_dir: "{{ alertmanager_root_dir }}/current"
 
-prometheus_alertmanager_config_flags:
-  'config.file': '{{ prometheus_alertmanager_config_dir }}/alertmanager.yml'
-  'storage.path': '{{ prometheus_alertmanager_db_dir }}'
-  'web.listen-address': '{{ prometheus_alertmanager_listen_address }}'
-```
+alertmanager_config_dir: /etc/prometheus/alertmanager
+alertmanager_templates_dir: "{{ alertmanager_config_dir }}/templates"
+alertmanager_pid_path: /var/run/prometheus-alertmanager.pid
+alertmanager_db_dir: /var/lib/prometheus/alertmanager
+alertmanager_log_dir: /var/log/prometheus
+
+alertmanager_listen_address: ':9093'
+alertmanager_external_url: 'http://localhost:9093/'
+
+alertmanager_templates_files: []
+
+alertmanager_resolve_timeout: 5m
+alertmanager_config_flags:
+  'config.file': '{{ alertmanager_config_dir }}/alertmanager.yml'
+  'storage.path': '{{ alertmanager_db_dir }}'
+  'web.listen-address': '{{ alertmanager_listen_address }}'
+  'web.external-url': '{{ alertmanager_external_url }}'```
 All variables you can see [here](defaults/main.yml).
 
 ## Dependencies
