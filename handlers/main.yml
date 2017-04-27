@@ -1,8 +1,5 @@
 ---
 
-- name: service reenable
-  command: systemctl reenable alertmanager.service
-
 - name: restart alertmanager
   service:
     name: alertmanager

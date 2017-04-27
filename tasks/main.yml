@@ -98,7 +98,6 @@
     group: root
     mode: 0644
   notify:
-    - service reenable
     - restart alertmanager
     
 - name: ensure alertmanager service is enabled
