@@ -105,15 +105,24 @@
     name: alertmanager
     enabled: yes
 
-- name: copy templates config files from playbook directory
-  copy:
-    src: "{{ playbook_dir }}/alertmanager.yml"
-    dest: "{{ alertmanager_config_dir }}"
+# - name: copy templates config files from playbook directory
+#   copy:
+#     src: "{{ playbook_dir }}/alertmanager.yml"
+#     dest: "{{ alertmanager_config_dir }}"
+#     owner: "{{ alertmanager_user }}"
+#     group: "{{ alertmanager_group }}"
+#     mode: 0644
+#   notify:
+#     - reload alertmanager
+
+- name: copy alertmanager config
+  template:
+    force: yes
+    src: "etc/prometheus/alertmanager/alertmanager.yml.j2"
+    dest: "{{ alertmanager_config_dir }}/alertmanager.yml"
     owner: "{{ alertmanager_user }}"
     group: "{{ alertmanager_group }}"
     mode: 0644
-  notify:
-    - reload alertmanager
 
 #- name: include alertmanager configuration
 #  include: configuration.yml

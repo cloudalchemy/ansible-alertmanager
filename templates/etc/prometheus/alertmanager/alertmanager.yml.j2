@@ -42,10 +42,16 @@ global:
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
 
-# Files from which custom notification template definitions are read.
-# The last component may use a wildcard matcher, e.g. 'templates/*.tmpl'.
-templates:
-  {% for dest in alertmanager_templates_files %}
-  - {{ alertmanager_templates_dir }}/{{ dest }}
-  {% endfor %}
+route:
+  group_by: ['alertname', 'cluster']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  continue: true
+  receiver: 'default-pager'
 
+
+receivers:
+  - name: 'default-pager'
+    pagerduty_configs:
+    - service_key: <team-X-key>
