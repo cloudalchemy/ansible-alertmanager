@@ -26,7 +26,7 @@ alertmanager_pid_path: /var/run/prometheus-alertmanager.pid
 alertmanager_db_dir: /var/lib/prometheus/alertmanager
 alertmanager_log_dir: /var/log/prometheus
 
-alertmanager_listen_address: ':9093'
+alertmanager_listen_address: '0.0.0.0:9093'
 alertmanager_external_url: 'http://localhost:9093/'
 
 alertmanager_templates_files: []
@@ -50,3 +50,5 @@ deploy.yml file:
   roles:
     - { role: alertmanager }
 ```
+
+Config file anlertmanager.yml should be on playbook

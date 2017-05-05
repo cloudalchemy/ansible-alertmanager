@@ -115,13 +115,7 @@
   notify:
     - reload alertmanager
 
-- name: install default (empty) alertmanager config file, if necessary
-  copy: src="../files/alertmanager.empty.yml"  dest="{{ alertmanager_config_dir }}/alertmanager.yml"
-  when: alertmanager_conf is not defined
-  notify:
-    - restart alertmanager
-
-  #- name: include alertmanager configuration
-  #include: configuration.yml
-  #tags: ['alertmanager-configuration']
+#- name: include alertmanager configuration
+#  include: configuration.yml
+#  tags: ['alertmanager-configuration']
 
