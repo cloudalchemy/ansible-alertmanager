@@ -123,6 +123,8 @@
     owner: "{{ alertmanager_user }}"
     group: "{{ alertmanager_group }}"
     mode: 0644
+  notify:
+    - restart alertmanager
 
 #- name: include alertmanager configuration
 #  include: configuration.yml

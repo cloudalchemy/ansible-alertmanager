@@ -26,32 +26,35 @@ global:
 {% endif %}
 
 {% if alertmanager_pagerduty_url != '' %}
-  # The API URL to use for Slack notifications.
+  # The API URL to use for pagerduty notifications.
   pagerduty_url: {{ alertmanager_pagerduty_url }}
 {% endif %}
 {% if alertmanager_opsgenie_api_host != '' %}
-  # The API URL to use for Slack notifications.
+  # The API URL to use for opsgenie notifications.
   opsgenie_api_host: {{ alertmanager_opsgenie_api_host }}
 {% endif %}
 {% if alertmanager_hipchat_url != '' %}
-  # The API URL to use for Slack notifications.
+  # The API URL to use for hipchat url notifications.
   hipchat_url: {{ alertmanager_hipchat_url }}
 {% endif %}
 {% if alertmanager_hipchat_auth_token != '' %}
-  # The API URL to use for Slack notifications.
+  # The API URL to use for hipchat token notifications.
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
 
 route:
-  group_by: ['alertname', 'cluster']
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 3h
-  continue: true
-  receiver: 'default-pager'
-
+ group_by: [cluster]
+ # If an alert isn't caught by a route, send it slack.
+ receiver: slack_devops
+ routes:
+  # Send severity=slack alerts to slack.
+  - match:
+      severity: slack
+    receiver: slack_devops
 
 receivers:
-  - name: 'default-pager'
-    pagerduty_configs:
-    - service_key: <team-X-key>
+- name: slack_devops
+  slack_configs:
+  - api_url: $slack_api_url
+{#    channel: '#devops' #}
+
