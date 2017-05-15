@@ -12,9 +12,9 @@
 
 
 - name: install needed packages
-  apt:
+  package:
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
     - curl
     - tar
