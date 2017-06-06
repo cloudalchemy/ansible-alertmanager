@@ -1,54 +1,30 @@
-# Ansible Role: alertmanager
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Human-dialog-warning.svg/2000px-Human-dialog-warning.svg.png" alt="alert logo" title="alert" align="right" height="60" /></p>
 
-An Ansible role that installs Prometheus Alertmanager server on Ubuntu-based machines with systemd.
+Ansible Role: alertmanager
+==========================
 
-## Requirements
+[![Build Status](https://ci.devops.sosoftware.pl/buildStatus/icon?job=SoInteractive/alertmanager/master)](https://ci.devops.sosoftware.pl/blue/organizations/jenkins/SoInteractive%2Falertmanager/activity) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/ansible/role/99999.svg)](https://galaxy.ansible.com/SoInteractive/alertmanager/) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
 
-All needed packages will be installed with this role.
+Deploy Prometheus Alertmanager service
 
-## Role Variables
+Requirements
+------------
 
-Available main variables are listed below, along with default values:
+It would be nice to have prometheus installed somewhere
+
+Example usage
+-------------
+
+Use it in a playbook as follows:
 ```yaml
-alertmanager_version: 0.5.1
-alertmanager_user: prometheus
-alertmanager_group: prometheus
-
-alertmanager_release_name: "alertmanager-{{ alertmanager_version }}.linux-amd64"
-
-alertmanager_root_dir: /opt/prometheus/alertmanager
-alertmanager_dist_dir: "{{ alertmanager_root_dir }}/dist"
-alertmanager_bin_dir: "{{ alertmanager_root_dir }}/current"
-
-alertmanager_config_dir: /etc/prometheus/alertmanager
-alertmanager_templates_dir: "{{ alertmanager_config_dir }}/templates"
-alertmanager_pid_path: /var/run/prometheus-alertmanager.pid
-alertmanager_db_dir: /var/lib/prometheus/alertmanager
-alertmanager_log_dir: /var/log/prometheus
-
-alertmanager_listen_address: '0.0.0.0:9093'
-alertmanager_external_url: 'http://localhost:9093/'
-
-alertmanager_templates_files: []
-
-alertmanager_resolve_timeout: 5m
-alertmanager_config_flags:
-  'config.file': '{{ alertmanager_config_dir }}/alertmanager.yml'
-  'storage.path': '{{ alertmanager_db_dir }}'
-  'web.listen-address': '{{ alertmanager_listen_address }}'
-  'web.external-url': '{{ alertmanager_external_url }}'```
-All variables you can see [here](defaults/main.yml).
-
-## Dependencies
-
-This role doesn't have dependencies.
-
-## Example Playbook
-deploy.yml file:
-```yaml
-- hosts: alertmanager
+- hosts: all
+  become: true
   roles:
-    - { role: alertmanager }
+    - SoInteractive.alertmanager
 ```
 
-Config file anlertmanager.yml should be on playbook
+Role Variables
+--------------
+
+Have a look at the [defaults/main.yml](defaults/main.yml) for role variables
+that can be overridden.

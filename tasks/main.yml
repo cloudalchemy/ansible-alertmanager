@@ -1,25 +1,4 @@
 ---
-#- name: Gather variables for each operating system
-#  include_vars: "{{ item }}"
-#  with_first_found:
-#    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
-#    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-#    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-#    - "{{ ansible_distribution | lower }}.yml"
-#    - "{{ ansible_os_family | lower }}.yml"
-#  tags:
-#    - always
-
-
-- name: install needed packages
-  package:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - curl
-    - tar
-    - bzip2
-
 - name: create alertmanager system group
   group:
     name: "{{ alertmanager_group }}"
@@ -83,7 +62,7 @@
     owner: "{{ alertmanager_user}}"
     group: "{{ alertmanager_group }}"
   when: alertmanager_updated | changed
-  
+
 - name: create symlink to the current release
   file:
     src: "{{ alertmanager_dist_dir }}/{{ alertmanager_release_name }}"
@@ -99,7 +78,7 @@
     mode: 0644
   notify:
     - restart alertmanager
-    
+
 - name: ensure alertmanager service is enabled
   service:
     name: alertmanager
@@ -129,4 +108,3 @@
 #- name: include alertmanager configuration
 #  include: configuration.yml
 #  tags: ['alertmanager-configuration']
-

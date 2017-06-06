@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+    - name: install testing suite
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - iproute
+        - net-tools
+
+- hosts: all
+  roles:
+    - alertmanager
+  vars:
+    alertmanager_slack_api_url: "http://example.com"
+    alertmanager_listen_address: "127.0.0.1:9093"
