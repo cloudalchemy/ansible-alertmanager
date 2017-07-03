@@ -43,14 +43,10 @@ global:
 {% endif %}
 
 route:
- group_by: [cluster]
+ group_by: [alertname]
  # If an alert isn't caught by a route, send it slack.
  receiver: slack_devops
- routes:
-  # Send severity=slack alerts to slack.
-  - match:
-      severity: slack
-    receiver: slack_devops
+
 
 receivers:
 - name: slack_devops
