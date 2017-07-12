@@ -50,6 +50,7 @@ route:
 receivers:
 - name: slack_devops
   slack_configs:
+  - send_resolved: true
   - api_url: $slack_api_url
   - channel: '#alerts'
 
