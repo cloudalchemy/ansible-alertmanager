@@ -5,9 +5,9 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 def test_directories(File):
     present = [
-        "/opt/prometheus/alertmanager",
-        "/etc/prometheus/alertmanager",
-        "/etc/prometheus/alertmanager/templates",
+        "/opt/alertmanager",
+        "/etc/alertmanager",
+        "/etc/alertmanager/templates",
         "/var/lib/alertmanager",
         "/var/log/alertmanager"
     ]
@@ -20,7 +20,8 @@ def test_directories(File):
 
 def test_files(File):
     present = [
-        "/etc/prometheus/alertmanager/alertmanager.yml",
+        "/opt/alertmanager/alertmanager",
+        "/etc/alertmanager/alertmanager.yml",
         "/etc/systemd/system/alertmanager.service"
     ]
     if present:

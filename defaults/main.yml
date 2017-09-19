@@ -1,34 +1,27 @@
 ---
 
-alertmanager_version: 0.7.1
-alertmanager_user: prometheus
-alertmanager_group: prometheus
+alertmanager_version: 0.8.0
 
-alertmanager_release_name: "alertmanager-{{ alertmanager_version }}.linux-amd64"
-
-alertmanager_root_dir: /opt/prometheus/alertmanager
-alertmanager_dist_dir: "{{ alertmanager_root_dir }}/dist"
-alertmanager_bin_dir: "{{ alertmanager_root_dir }}/current"
-
-alertmanager_config_dir: /etc/prometheus/alertmanager
-alertmanager_templates_dir: "{{ alertmanager_config_dir }}/templates"
-alertmanager_pid_path: /var/run/prometheus-alertmanager.pid
+alertmanager_root_dir: /opt/alertmanager
+alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
 alertmanager_log_dir: /var/log/alertmanager
 
 alertmanager_listen_address: '0.0.0.0:9093'
 alertmanager_external_url: 'http://localhost:9093/'
 
-alertmanager_templates_files: []
-
-alertmanager_resolve_timeout: 5m
+alertmanager_resolve_timeout: 3m
 
 # SMTP default params
-alertmanager_smtp_from: ''
-alertmanager_smtp_smarthost: ''
-alertmanager_smtp_auth_username: ''
-alertmanager_smtp_auth_password: ''
-alertmanager_smtp_auth_secret: ''
+alertmanager_smtp: {}
+#alertmanager_smtp:
+#  from: ''
+#  smarthost: ''
+#  auth_username: ''
+#  auth_password: ''
+#  auth_secret: ''
+#  auth_identity: ''
+#  auth_require_tls: "True"
 
 # Default values you can see here -> https://prometheus.io/docs/alerting/configuration/
 alertmanager_slack_api_url: ''
@@ -37,8 +30,54 @@ alertmanager_opsgenie_api_host: ''
 alertmanager_hipchat_url: ''
 alertmanager_hipchat_auth_token: ''
 
-alertmanager_config_flags:
-  'config.file': '{{ alertmanager_config_dir }}/alertmanager.yml'
-  'storage.path': '{{ alertmanager_db_dir }}'
-  'web.listen-address': '{{ alertmanager_listen_address }}'
-  'web.external-url': '{{ alertmanager_external_url }}'
+alertmanager_receivers:
+- name: slack
+  slack_configs:
+  - send_resolved: true
+  - api_url: $slack_api_url
+  - channel: '#alerts'
+
+alertmanager_inhibit_rules: []
+
+alertmanager_route:
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: slack
+
+alertmanager_child_routes: []
+#alertmanager_child_routes:
+#  # This routes performs a regular expression match on alert labels to
+#  # catch alerts that are related to a list of services.
+#  - match_re:
+#      service: ^(foo1|foo2|baz)$
+#    receiver: team-X-mails
+#    # The service has a sub-route for critical alerts, any alerts
+#    # that do not match, i.e. severity != critical, fall-back to the
+#    # parent node and are sent to 'team-X-mails'
+#    routes:
+#    - match:
+#        severity: critical
+#      receiver: team-X-pager
+#  - match:
+#      service: files
+#    receiver: team-Y-mails
+#    routes:
+#    - match:
+#        severity: critical
+#      receiver: team-Y-pager
+#  # This route handles all alerts coming from a database service. If there's
+#  # no team to handle it, it defaults to the DB team.
+#  - match:
+#      service: database
+#    receiver: team-DB-pager
+#    # Also group alerts by affected database.
+#    group_by: [alertname, cluster, database]
+#    routes:
+#    - match:
+#        owner: team-X
+#      receiver: team-X-pager
+#    - match:
+#        owner: team-Y
+#      receiver: team-Y-pager
