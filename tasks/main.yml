@@ -37,13 +37,16 @@
   run_once: true
   delegate_to: localhost
 
-- name: propagate alertmanager and promtool binaries
+- name: propagate alertmanager and amtool binaries
   copy:
-    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/alertmanager"
-    dest: "{{ alertmanager_root_dir }}/alertmanager"
+    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/{{ item }}"
+    dest: "{{ alertmanager_root_dir }}/{{ item }}"
     mode: 0755
     owner: alertmanager
     group: prometheus
+  with_items:
+    - alertmanager
+    - amtool
   notify:
     - restart alertmanager
 
