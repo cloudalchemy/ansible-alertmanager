@@ -12,6 +12,10 @@ alertmanager_external_url: 'http://localhost:9093/'
 
 alertmanager_resolve_timeout: 3m
 
+alertmanager_cli_flags: {}
+#alertmanager_cli_flags:
+#  data.retention: 10
+
 # SMTP default params
 alertmanager_smtp: {}
 #alertmanager_smtp:
