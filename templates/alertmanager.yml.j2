@@ -2,29 +2,13 @@ global:
   # ResolveTimeout is the time after which an alert is declared resolved
   # if it has not been updated.
   resolve_timeout: {{ alertmanager_resolve_timeout }}
-
-{% if alertmanager_smtp_from != '' %}
-  # The default SMTP From header field.
-  smtp_from: {{ alertmanager_smtp_from }}
-{% endif %}
-{% if alertmanager_smtp_smarthost != '' %}
-  # The default SMTP smarthost used for sending emails.
-  smtp_smarthost: {{ alertmanager_smtp_smarthost }}
-{% endif %}
-{% if alertmanager_smtp_auth_username != '' %}
-  # SMTP authentication information.
-  smtp_auth_username: {{ alertmanager_smtp_auth_username }}
-  smtp_auth_password: {{ alertmanager_smtp_auth_password }}
-{% endif %}
-{% if alertmanager_smtp_auth_secret != '' %}
-  smtp_auth_secret: {{ alertmanager_smtp_auth_secret }}
-{% endif %}
-
+{% for key, value in alertmanager_smtp.iteritems() %}
+  smtp_{{ key }}: "{{ value }}"
+{% endfor %}
 {% if alertmanager_slack_api_url != '' %}
   # The API URL to use for Slack notifications.
   slack_api_url: {{ alertmanager_slack_api_url }}
 {% endif %}
-
 {% if alertmanager_pagerduty_url != '' %}
   # The API URL to use for pagerduty notifications.
   pagerduty_url: {{ alertmanager_pagerduty_url }}
@@ -42,16 +26,19 @@ global:
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
 
-route:
- group_by: [alertname]
- # If an alert isn't caught by a route, send it slack.
- receiver: slack_devops
-
+{% if alertmanager_receivers != [] %}
 receivers:
-- name: slack_devops
-  slack_configs:
-  - send_resolved: true
-  - api_url: $slack_api_url
-  - channel: '#alerts'
+{{ alertmanager_receivers | to_nice_yaml(indent=2) }}
+{% endif %}
 
+{% if alertmanager_inhibit_rules != [] %}
+inhibit_rules:
+{{ alertmanager_inhibit_rules | to_nice_yaml(indent=2) }}
+{% endif %}
 
+route:
+  {{ alertmanager_route | to_nice_yaml(indent=2) | indent(2, False) }}
+{% if alertmanager_child_routes != [] %}
+  routes:
+  {{ alertmanager_child_routes | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endif %}
