@@ -1,13 +1,11 @@
 ---
-- name: reload systemd
-  command: systemctl daemon-reload
-
 - name: restart alertmanager
-  service:
+  systemd:
+    daemon_reload: yes
     name: alertmanager
     state: restarted
 
 - name: reload alertmanager
-  service:
+  systemd:
     name: alertmanager
     state: reloaded

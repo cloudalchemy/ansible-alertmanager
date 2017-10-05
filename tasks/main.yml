@@ -58,10 +58,10 @@
     group: root
     mode: 0644
   notify:
-    - reload systemd
+    - restart alertmanager
 
 - name: ensure alertmanager service is enabled
-  service:
+  systemd:
     name: alertmanager
     enabled: yes
 
