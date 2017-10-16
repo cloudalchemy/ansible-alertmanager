@@ -22,6 +22,7 @@ function failure {
 }
 
 if [ -z "$MM_WEBHOOK" ]
+then
   echo "MM_WEBHOOK variable is not set!"
   exit 0
 fi
