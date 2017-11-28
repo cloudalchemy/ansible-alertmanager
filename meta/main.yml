@@ -2,9 +2,8 @@
 galaxy_info:
   author: Roman Demachkovych
   description: Deploy Prometheus Alertmanager service
-  company: Sointeractive
   license: MIT
-  min_ansible_version: 2.0
+  min_ansible_version: 2.2
   platforms:
   - name: Ubuntu
     versions:
