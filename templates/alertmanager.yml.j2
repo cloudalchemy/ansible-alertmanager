@@ -25,7 +25,8 @@ global:
   # The API URL to use for hipchat token notifications.
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
-
+templates:
+- '/etc/alertmanager/templates/*.tmpl'
 {% if alertmanager_receivers != [] %}
 receivers:
 {{ alertmanager_receivers | to_nice_yaml(indent=2) }}
