@@ -30,16 +30,16 @@
 - name: download alertmanager binary to local folder
   become: no
   unarchive:
-    src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: yes
-    creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/alertmanager"
+    creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
   run_once: true
   delegate_to: localhost
 
 - name: propagate alertmanager and amtool binaries
   copy:
-    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/{{ item }}"
+    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
     dest: "{{ alertmanager_root_dir }}/{{ item }}"
     mode: 0755
     owner: alertmanager
