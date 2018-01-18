@@ -10,7 +10,6 @@ def test_directories(host):
         "/etc/alertmanager",
         "/etc/alertmanager/templates",
         "/var/lib/alertmanager",
-        "/var/log/alertmanager"
     ]
     files = [
         "/opt/alertmanager/alertmanager",

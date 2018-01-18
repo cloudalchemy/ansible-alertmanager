@@ -25,7 +25,6 @@
     - "{{ alertmanager_config_dir }}"
     - "{{ alertmanager_config_dir }}/templates"
     - "{{ alertmanager_db_dir }}"
-    - "{{ alertmanager_log_dir }}"
 
 - name: download alertmanager binary to local folder
   become: no
