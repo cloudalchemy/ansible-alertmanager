@@ -24,7 +24,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `alertmanager_version` | 0.12.0 | Alermanager package version |
+| `alertmanager_version` | 0.13.0 | Alermanager package version |
 | `alertmanager_listen_address` | '0.0.0.0:9093' | Address on which alertmanager will be listening |
 | `alertmanager_external_url` | 'http://localhost:9093/' | External address on which alertmanager is available. Useful when behind reverse proxy. Ex. example.org/alertmanager |
 | `alertmanager_root_dir` | /opt/alertmanager | Path to directory with alertmanager and amtool binaries |
@@ -33,17 +33,17 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_log_dir` | /var/log/alertmanager | Path to directory with alertmanager logs |
 | `alertmanager_config_file` | 'alertmanager.yml.j2' | Variable used to provide custom alertmanager configuration file in form of ansible template |
 | `alertmanager_cli_flags` | {} | Additional configuration flags passed to prometheus binary at startup |
-| `alertmanager_resolve_timeout` | 3m | |
-| `alertmanager_smtp` | {} | SMTP configuration ???? |
-| `alertmanager_slack_api_url` | "" | |
-| `alertmanager_pagerduty_url`  "" | |
-| `alertmanager_opsgenie_api_host` | "" | |
-| `alertmanager_hipchat_url` | "" | |
-| `alertmanager_hipchat_auth_token` | "" | |
-| `alertmanager_receivers` | [] | |
-| `alertmanager_inhibit_rules` | [] | |
-| `alertmanager_route` | [] | |
-| `alertmanager_child_routes` | [] | |
+| `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
+| `alertmanager_smtp` | {} | SMTP (email) configuration |
+| `alertmanager_slack_api_url` | "" | Slack webhook url |
+| `alertmanager_pagerduty_url`  "" | Pagerduty webhook url |
+| `alertmanager_opsgenie_api_host` | "" | Opsgenie webhook url |
+| `alertmanager_hipchat_url` | "" | Hipchat webhook url |
+| `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
+| `alertmanager_receivers` | [defaults/main.yml#L38](defaults/main.yml#L38) | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
+| `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
+| `alertmanager_route` | [defaults/main.yml#L47](defaults/main.yml#L47) | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |
+| `alertmanager_child_routes` | [] | List of child routes. |
 
 ## Example
 
