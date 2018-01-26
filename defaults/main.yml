@@ -1,6 +1,5 @@
 ---
-
-alertmanager_version: 0.12.0
+alertmanager_version: 0.13.0
 
 alertmanager_root_dir: /opt/alertmanager
 alertmanager_config_dir: /etc/alertmanager

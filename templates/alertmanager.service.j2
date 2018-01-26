@@ -1,3 +1,9 @@
+{%- if alertmanager_version | version_compare('0.13.0', '>=') %}
+{%- set pre = '-' %}
+{%- else %}
+{%- set pre = '' %}
+{%- endif %}
+# {{ ansible_managed }}
 [Unit]
 Description=Prometheus Alertmanager
 After=network.target
@@ -9,11 +15,11 @@ User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ alertmanager_root_dir }}/alertmanager \
-  -config.file={{ alertmanager_config_dir }}/alertmanager.yml \
-  -storage.path={{ alertmanager_db_dir }} \
-  -web.listen-address={{ alertmanager_listen_address }} \
-  -web.external-url={{ alertmanager_external_url }}{% for flag, flag_value in alertmanager_cli_flags.iteritems() %} \
-  -{{ flag }}={{ flag_value }}{% endfor %}
+  {{ pre }}-config.file={{ alertmanager_config_dir }}/alertmanager.yml \
+  {{ pre }}-storage.path={{ alertmanager_db_dir }} \
+  {{ pre }}-web.listen-address={{ alertmanager_listen_address }} \
+  {{ pre }}-web.external-url={{ alertmanager_external_url }}{% for flag, flag_value in alertmanager_cli_flags.iteritems() %} \
+  {{ pre }}-{{ flag }}={{ flag_value }}{% endfor %}
 
 SyslogIdentifier=alertmanager
 Restart=always
