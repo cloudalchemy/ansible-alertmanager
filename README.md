@@ -36,7 +36,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
 | `alertmanager_smtp` | {} | SMTP (email) configuration |
 | `alertmanager_slack_api_url` | "" | Slack webhook url |
-| `alertmanager_pagerduty_url`  "" | Pagerduty webhook url |
+| `alertmanager_pagerduty_url` | "" | Pagerduty webhook url |
 | `alertmanager_opsgenie_api_host` | "" | Opsgenie webhook url |
 | `alertmanager_hipchat_url` | "" | Hipchat webhook url |
 | `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
