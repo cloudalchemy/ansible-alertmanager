@@ -30,7 +30,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_root_dir` | /opt/alertmanager | Path to directory with alertmanager and amtool binaries |
 | `alertmanager_config_dir` | /etc/alertmanager | Path to directory with alertmanager configuration |
 | `alertmanager_db_dir` | /var/lib/alertmanager | Path to directory with alertmanager database |
-| `alertmanager_log_dir` | /var/log/alertmanager | Path to directory with alertmanager logs |
 | `alertmanager_config_file` | 'alertmanager.yml.j2' | Variable used to provide custom alertmanager configuration file in form of ansible template |
 | `alertmanager_cli_flags` | {} | Additional configuration flags passed to prometheus binary at startup |
 | `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
