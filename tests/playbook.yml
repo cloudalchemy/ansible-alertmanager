@@ -6,3 +6,10 @@
   vars:
     alertmanager_slack_api_url: "http://example.com"
     alertmanager_listen_address: "127.0.0.1:9093"
+    alertmanager_mesh:
+      peer-id: "{{ ansible_default_ipv4.macaddress }}"
+      listen-address: "127.0.0.1:6783"
+      nickname: "{{ ansible_hostname }}"
+      peers:
+        - "127.0.0.1:6783"
+        - "demo.cloudalchemy.org:6783"

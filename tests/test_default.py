@@ -33,5 +33,9 @@ def test_service(host):
 
 
 def test_socket(host):
-    s = host.socket("tcp://127.0.0.1:9093")
-    assert s.is_listening
+    sockets = [
+      "tcp://127.0.0.1:9093",
+      "tcp://127.0.0.1:6783"
+    ]
+    for s in sockets:
+        assert host.socket(s).is_listening

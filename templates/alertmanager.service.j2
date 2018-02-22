@@ -15,10 +15,19 @@ User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ alertmanager_root_dir }}/alertmanager \
+{% for option, value in alertmanager_mesh.items() %}
+{%   if option == "peers" %}
+{%     for peer in value %}
+  {{ pre }}-mesh.peer={{ peer }} \
+{%     endfor %}
+{%   else %}
+  {{ pre }}-mesh.{{ option }}={{ value }} \
+{%   endif %}
+{% endfor %}
   {{ pre }}-config.file={{ alertmanager_config_dir }}/alertmanager.yml \
   {{ pre }}-storage.path={{ alertmanager_db_dir }} \
   {{ pre }}-web.listen-address={{ alertmanager_listen_address }} \
-  {{ pre }}-web.external-url={{ alertmanager_external_url }}{% for flag, flag_value in alertmanager_cli_flags.iteritems() %} \
+  {{ pre }}-web.external-url={{ alertmanager_external_url }}{% for flag, flag_value in alertmanager_cli_flags.items() %} \
   {{ pre }}-{{ flag }}={{ flag_value }}{% endfor %}
 
 SyslogIdentifier=alertmanager
