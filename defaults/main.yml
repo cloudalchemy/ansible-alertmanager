@@ -42,7 +42,7 @@ alertmanager_mesh: {}
 #  nickname: "{{ ansible_hostname }}"
 #  peers:
 #    - "{{ ansible_default_ipv4.address }}:6783"
-#    - "example.org:6783"
+#    - "demo.cloudalchemy.org:6783"
 
 alertmanager_receivers:
 - name: slack
