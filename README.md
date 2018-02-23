@@ -24,7 +24,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `alertmanager_version` | 0.13.0 | Alermanager package version |
+| `alertmanager_version` | 0.14.0 | Alermanager package version |
 | `alertmanager_listen_address` | '0.0.0.0:9093' | Address on which alertmanager will be listening |
 | `alertmanager_external_url` | 'http://localhost:9093/' | External address on which alertmanager is available. Useful when behind reverse proxy. Ex. example.org/alertmanager |
 | `alertmanager_root_dir` | /opt/alertmanager | Path to directory with alertmanager and amtool binaries |
