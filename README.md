@@ -39,6 +39,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_opsgenie_api_host` | "" | Opsgenie webhook url |
 | `alertmanager_hipchat_url` | "" | Hipchat webhook url |
 | `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
+| `alertmanager_mesh` | {} | HA mesh network configuration |
 | `alertmanager_receivers` | [defaults/main.yml#L38](defaults/main.yml#L38) | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
 | `alertmanager_route` | [defaults/main.yml#L47](defaults/main.yml#L47) | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |

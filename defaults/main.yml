@@ -34,6 +34,16 @@ alertmanager_opsgenie_api_host: ''
 alertmanager_hipchat_url: ''
 alertmanager_hipchat_auth_token: ''
 
+# First read: https://github.com/prometheus/alertmanager#high-availability
+alertmanager_mesh: {}
+#alertmanager_mesh:
+#  peer-id: "{{ ansible_default_ipv4.macaddress }}"
+#  listen-address: "{{ ansible_default_ipv4.address }}:6783"
+#  nickname: "{{ ansible_hostname }}"
+#  peers:
+#    - "{{ ansible_default_ipv4.address }}:6783"
+#    - "demo.cloudalchemy.org:6783"
+
 alertmanager_receivers:
 - name: slack
   slack_configs:
