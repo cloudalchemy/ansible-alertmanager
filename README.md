@@ -14,7 +14,7 @@ Deploy and manage Prometheus [alertmanager](https://github.com/prometheus/alertm
 
 ## Requirements
 
-- Ansible > 2.2
+- Ansible >= 2.3
 - go-lang installed on deployer machine (same one which ansible is installed)
 
 It would be nice to have prometheus installed somewhere
