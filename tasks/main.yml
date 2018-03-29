@@ -76,3 +76,23 @@
     mode: 0644
   notify:
     - restart alertmanager
+
+- name: Install SELinux dependencies on RedHat OS family
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libselinux-python
+    - policycoreutils-python
+  when:
+    - ansible_os_family == "RedHat"
+
+- name: Allow alertmanager to bind to port in SELinux on RedHat OS family
+  seport:
+    ports: "{{ alertmanager_web_listen_address.split(':')[1] }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_virtualization_type != "docker"

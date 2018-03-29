@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.alertmanager-blue.svg)](https://galaxy.ansible.com/cloudalchemy/alertmanager/)
 [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-alertmanager.svg)](https://github.com/cloudalchemy/ansible-alertmanager/tags)
+[![IRC](https://img.shields.io/badge/chat-on%20freenode-blue.svg)](http://webchat.freenode.net/?channels=cloudalchemy)
 
 ## Description
 
@@ -13,7 +14,7 @@ Deploy and manage Prometheus [alertmanager](https://github.com/prometheus/alertm
 
 ## Requirements
 
-- Ansible > 2.2
+- Ansible >= 2.3
 - go-lang installed on deployer machine (same one which ansible is installed)
 
 It would be nice to have prometheus installed somewhere
@@ -40,7 +41,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_hipchat_url` | "" | Hipchat webhook url |
 | `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
 | `alertmanager_mesh` | {} | HA mesh network configuration |
-| `alertmanager_receivers` | [defaults/main.yml#L38](defaults/main.yml#L38) | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
+| `alertmanager_receivers` | [] | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
 | `alertmanager_route` | [defaults/main.yml#L47](defaults/main.yml#L47) | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |
 | `alertmanager_child_routes` | [] | List of child routes. |
@@ -65,9 +66,9 @@ We provide demo site for full monitoring solution based on prometheus and grafan
 The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v1.25). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
 All packages you need to can be specified in one line:
 ```sh
-pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0
+pip install ansible 'ansible-lint>=3.4.15' 'molecule==1.25.0' docker 'testinfra>=1.7.0,<=1.10.1'
 ```
-This should be similiar to one listed in `.travis.yml` file in `install` section. 
+This should be similar to one listed in `.travis.yml` file in `install` section. 
 After installing test suit you can run test by running
 ```sh
 molecule test
