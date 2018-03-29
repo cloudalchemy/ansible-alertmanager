@@ -1,0 +1,80 @@
+---
+- name: create alertmanager system group
+  group:
+    name: alertmanager
+    system: yes
+    state: present
+
+- name: create alertmanager system user
+  user:
+    name: alertmanager
+    system: yes
+    shell: "/sbin/nologin"
+    group: alertmanager
+    createhome: no
+
+- name: create alertmanager directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: alertmanager
+    group: alertmanager
+    mode: 0755
+  with_items:
+    - "{{ alertmanager_root_dir }}"
+    - "{{ alertmanager_config_dir }}"
+    - "{{ alertmanager_config_dir }}/templates"
+    - "{{ alertmanager_db_dir }}"
+
+- name: download alertmanager binary to local folder
+  become: no
+  unarchive:
+    src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+    creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
+  run_once: true
+  delegate_to: localhost
+
+- name: propagate alertmanager and amtool binaries
+  copy:
+    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
+    dest: "{{ alertmanager_root_dir }}/{{ item }}"
+    mode: 0755
+    owner: alertmanager
+    group: alertmanager
+  with_items:
+    - alertmanager
+    - amtool
+  notify:
+    - restart alertmanager
+
+- name: create systemd service unit
+  template:
+    src: alertmanager.service.j2
+    dest: /etc/systemd/system/alertmanager.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart alertmanager
+
+- name: Install SELinux dependencies on RedHat OS family
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libselinux-python
+    - policycoreutils-python
+  when:
+    - ansible_os_family == "RedHat"
+
+- name: Allow alertmanager to bind to port in SELinux on RedHat OS family
+  seport:
+    ports: "{{ alertmanager_web_listen_address.split(':')[1] }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_virtualization_type != "docker"

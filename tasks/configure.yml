@@ -1,0 +1,14 @@
+---
+- name: copy alertmanager config
+  template:
+    force: yes
+    src: "{{ alertmanager_config_file }}"
+    dest: "{{ alertmanager_config_dir }}/alertmanager.yml"
+    owner: alertmanager
+    group: alertmanager
+    mode: 0644
+  notify:
+    - restart alertmanager
+
+# TODO
+#- name: copy templates
