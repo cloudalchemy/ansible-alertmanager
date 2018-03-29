@@ -1,4 +1,17 @@
 ---
+- name: Backward compatibility of variables
+  set_fact:
+    alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
+
+- name: Fail when extra config flags are duplicating ansible variables
+  fail:
+    msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
+  when:
+    (alertmanager_config_flags_extra['config.file'] is defined) or
+    (alertmanager_config_flags_extra['storage.path'] is defined) or
+    (alertmanager_config_flags_extra['web.listen-address'] is defined) or
+    (alertmanager_config_flags_extra['web.external-url'] is defined)
+
 - name: Fail when there are no receivers defined
   fail:
     msg: "Configure alert receivers (`alertmanager_receivers`). Otherwise alertmanager won't know where to send alerts."
