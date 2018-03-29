@@ -21,7 +21,6 @@
     group: alertmanager
     mode: 0755
   with_items:
-    - "{{ alertmanager_root_dir }}"
     - "{{ alertmanager_config_dir }}"
     - "{{ alertmanager_config_dir }}/templates"
     - "{{ alertmanager_db_dir }}"
@@ -39,7 +38,7 @@
 - name: propagate alertmanager and amtool binaries
   copy:
     src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
-    dest: "{{ alertmanager_root_dir }}/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
     mode: 0755
     owner: alertmanager
     group: alertmanager
@@ -78,3 +77,12 @@
   when:
     - ansible_os_family == "RedHat"
     - ansible_virtualization_type != "docker"
+
+- name: remove alertmanager binaries from old location
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/alertmanager/alertmanager
+    - /opt/alertmanager/amtool
+    - /opt/alertmanager

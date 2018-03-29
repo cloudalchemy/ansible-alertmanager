@@ -14,7 +14,7 @@ PIDFile=/var/run/alertmanager.pid
 User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart={{ alertmanager_root_dir }}/alertmanager \
+ExecStart=/usr/local/bin/alertmanager \
 {% for option, value in alertmanager_mesh.items() %}
 {%   if option == "peers" %}
 {%     for peer in value %}
