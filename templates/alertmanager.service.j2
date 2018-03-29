@@ -26,8 +26,8 @@ ExecStart=/usr/local/bin/alertmanager \
 {% endfor %}
   {{ pre }}-config.file={{ alertmanager_config_dir }}/alertmanager.yml \
   {{ pre }}-storage.path={{ alertmanager_db_dir }} \
-  {{ pre }}-web.listen-address={{ alertmanager_listen_address }} \
-  {{ pre }}-web.external-url={{ alertmanager_external_url }}{% for flag, flag_value in alertmanager_config_flags_extra.items() %} \
+  {{ pre }}-web.listen-address={{ alertmanager_web_listen_address }} \
+  {{ pre }}-web.external-url={{ alertmanager_web_external_url }}{% for flag, flag_value in alertmanager_config_flags_extra.items() %} \
   {{ pre }}-{{ flag }}={{ flag_value }}{% endfor %}
 
 SyslogIdentifier=alertmanager

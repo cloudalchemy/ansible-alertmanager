@@ -1,8 +1,18 @@
 ---
-- name: Backward compatibility of variables
+- name: Backward compatibility of variable [part 1]
   set_fact:
     alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
   when: alertmanager_cli_flags is defined
+
+- name: Backward compatibility of variable [part 2]
+  set_fact:
+    alertmanager_web_listen_address: "{{ alertmanager_listen_address }}"
+  when: alertmanager_listen_address is defined
+
+- name: Backward compatibility of variable [part 3]
+  set_fact:
+    alertmanager_web_external_url: "{{ alertmanager_external_url }}"
+  when: alertmanager_external_url is defined
 
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
