@@ -1,28 +1,23 @@
+# {{ ansible_managed }}
+
 global:
-  # ResolveTimeout is the time after which an alert is declared resolved
-  # if it has not been updated.
   resolve_timeout: {{ alertmanager_resolve_timeout }}
 {% for key, value in alertmanager_smtp.iteritems() %}
   smtp_{{ key }}: "{{ value }}"
 {% endfor %}
 {% if alertmanager_slack_api_url != '' %}
-  # The API URL to use for Slack notifications.
   slack_api_url: {{ alertmanager_slack_api_url }}
 {% endif %}
 {% if alertmanager_pagerduty_url != '' %}
-  # The API URL to use for pagerduty notifications.
   pagerduty_url: {{ alertmanager_pagerduty_url }}
 {% endif %}
 {% if alertmanager_opsgenie_api_host != '' %}
-  # The API URL to use for opsgenie notifications.
   opsgenie_api_host: {{ alertmanager_opsgenie_api_host }}
 {% endif %}
 {% if alertmanager_hipchat_url != '' %}
-  # The API URL to use for hipchat url notifications.
   hipchat_url: {{ alertmanager_hipchat_url }}
 {% endif %}
 {% if alertmanager_hipchat_auth_token != '' %}
-  # The API URL to use for hipchat token notifications.
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
 templates:
@@ -31,12 +26,10 @@ templates:
 receivers:
 {{ alertmanager_receivers | to_nice_yaml(indent=2) }}
 {% endif %}
-
 {% if alertmanager_inhibit_rules != [] %}
 inhibit_rules:
 {{ alertmanager_inhibit_rules | to_nice_yaml(indent=2) }}
 {% endif %}
-
 route:
   {{ alertmanager_route | to_nice_yaml(indent=2) | indent(2, False) }}
 {% if alertmanager_child_routes != [] %}
