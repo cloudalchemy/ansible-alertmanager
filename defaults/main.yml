@@ -59,7 +59,7 @@ alertmanager_route: {}
 #  group_by: ['alertname', 'cluster', 'service']
 #  group_wait: 30s
 #  group_interval: 5m
-#  repeat_interval: 3h
+#  repeat_interval: 4h
 #  receiver: slack
 
 alertmanager_child_routes: []
