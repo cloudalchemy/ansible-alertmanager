@@ -51,7 +51,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 ```yaml
 - hosts: all
-  become: true
   roles:
     - cloudalchemy.alertmanager
 ```

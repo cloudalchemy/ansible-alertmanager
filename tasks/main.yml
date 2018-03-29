@@ -2,10 +2,13 @@
 - include: preflight.yml
 
 - include: install.yml
+  become: yes
 
 - include: configure.yml
+  become: yes
 
 - name: ensure alertmanager service is started and enabled
+  become: yes
   systemd:
     name: alertmanager
     state: started
