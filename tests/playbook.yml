@@ -6,4 +6,3 @@
       include_vars: vars.yml
   roles:
     - ansible-alertmanager
-
