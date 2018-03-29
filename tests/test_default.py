@@ -6,13 +6,13 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 def test_directories(host):
     dirs = [
-        "/opt/alertmanager",
         "/etc/alertmanager",
         "/etc/alertmanager/templates",
         "/var/lib/alertmanager"
     ]
     files = [
-        "/opt/alertmanager/alertmanager",
+        "/usr/local/bin/alertmanager",
+        "/usr/local/bin/amtool",
         "/etc/alertmanager/alertmanager.yml",
         "/etc/systemd/system/alertmanager.service"
     ]
