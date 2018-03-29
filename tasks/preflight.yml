@@ -2,6 +2,7 @@
 - name: Backward compatibility of variables
   set_fact:
     alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
+  when: alertmanager_cli_flags is defined
 
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
