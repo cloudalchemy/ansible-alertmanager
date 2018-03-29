@@ -44,21 +44,23 @@ alertmanager_mesh: {}
 #    - "{{ ansible_default_ipv4.address }}:6783"
 #    - "demo.cloudalchemy.org:6783"
 
-alertmanager_receivers:
-- name: slack
-  slack_configs:
-  - send_resolved: true
-  - api_url: $slack_api_url
-  - channel: '#alerts'
+alertmanager_receivers: []
+#alertmanager_receivers:
+#- name: slack
+#  slack_configs:
+#  - send_resolved: true
+#    api_url: $slack_api_url
+#    channel: '#alerts'
 
 alertmanager_inhibit_rules: []
 
-alertmanager_route:
-  group_by: ['alertname', 'cluster', 'service']
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 3h
-  receiver: slack
+alertmanager_route: {}
+#alertmanager_route:
+#  group_by: ['alertname', 'cluster', 'service']
+#  group_wait: 30s
+#  group_interval: 5m
+#  repeat_interval: 3h
+#  receiver: slack
 
 alertmanager_child_routes: []
 #alertmanager_child_routes:

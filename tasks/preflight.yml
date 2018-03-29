@@ -1,0 +1,10 @@
+---
+- name: Fail when there are no receivers defined
+  fail:
+    msg: "Configure alert receivers (`alertmanager_receivers`). Otherwise alertmanager won't know where to send alerts."
+  when: alertmanager_receivers == []
+
+- name: Fail when there is no alert route defined
+  fail:
+    msg: "Configure alert routing (`alertmanager_route`). Otherwise alertmanager won't know how to send alerts."
+  when: alertmanager_receivers == {}

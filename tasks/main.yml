@@ -1,4 +1,6 @@
 ---
+- include: preflight.yml
+
 - name: create alertmanager system group
   group:
     name: alertmanager
