@@ -15,7 +15,6 @@ Deploy and manage Prometheus [alertmanager](https://github.com/prometheus/alertm
 ## Requirements
 
 - Ansible >= 2.3
-- go-lang installed on deployer machine (same one which ansible is installed)
 
 It would be nice to have prometheus installed somewhere
 
@@ -32,7 +31,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_config_dir` | /etc/alertmanager | Path to directory with alertmanager configuration |
 | `alertmanager_db_dir` | /var/lib/alertmanager | Path to directory with alertmanager database |
 | `alertmanager_config_file` | 'alertmanager.yml.j2' | Variable used to provide custom alertmanager configuration file in form of ansible template |
-| `alertmanager_cli_flags` | {} | Additional configuration flags passed to prometheus binary at startup |
+| `alertmanager_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
 | `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
 | `alertmanager_smtp` | {} | SMTP (email) configuration |
 | `alertmanager_slack_api_url` | "" | Slack webhook url |
@@ -43,7 +42,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_mesh` | {} | HA mesh network configuration |
 | `alertmanager_receivers` | [] | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
-| `alertmanager_route` | [defaults/main.yml#L47](defaults/main.yml#L47) | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |
+| `alertmanager_route` | {} | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |
 | `alertmanager_child_routes` | [] | List of child routes. |
 
 ## Example
@@ -52,7 +51,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 ```yaml
 - hosts: all
-  become: true
   roles:
     - cloudalchemy.alertmanager
 ```

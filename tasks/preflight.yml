@@ -1,0 +1,39 @@
+---
+- name: Backward compatibility of variable [part 1]
+  set_fact:
+    alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
+  when: alertmanager_cli_flags is defined
+
+- name: Backward compatibility of variable [part 2]
+  set_fact:
+    alertmanager_web_listen_address: "{{ alertmanager_listen_address }}"
+  when: alertmanager_listen_address is defined
+
+- name: Backward compatibility of variable [part 3]
+  set_fact:
+    alertmanager_web_external_url: "{{ alertmanager_external_url }}"
+  when: alertmanager_external_url is defined
+
+- name: Fail when extra config flags are duplicating ansible variables
+  fail:
+    msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
+  when:
+    (alertmanager_config_flags_extra['config.file'] is defined) or
+    (alertmanager_config_flags_extra['storage.path'] is defined) or
+    (alertmanager_config_flags_extra['web.listen-address'] is defined) or
+    (alertmanager_config_flags_extra['web.external-url'] is defined)
+
+- name: Fail when there are no receivers defined
+  fail:
+    msg: "Configure alert receivers (`alertmanager_receivers`). Otherwise alertmanager won't know where to send alerts."
+  when: alertmanager_receivers == []
+
+- name: Fail when there is no alert route defined
+  fail:
+    msg: "Configure alert routing (`alertmanager_route`). Otherwise alertmanager won't know how to send alerts."
+  when: alertmanager_receivers == {}
+
+- name: Fail when child routes are defined not in proper place
+  fail:
+    msg: "Please recofigure `alertmanager_route` a way in which child routes are placed in `alertmanager_child_routes`."
+  when: alertmanager_route.routes is defined

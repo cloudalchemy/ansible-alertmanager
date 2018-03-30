@@ -1,19 +1,18 @@
 ---
 alertmanager_version: 0.14.0
 
-alertmanager_root_dir: /opt/alertmanager
 alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
 
 alertmanager_config_file: 'alertmanager.yml.j2'
 
-alertmanager_listen_address: '0.0.0.0:9093'
-alertmanager_external_url: 'http://localhost:9093/'
+alertmanager_web_listen_address: '0.0.0.0:9093'
+alertmanager_web_external_url: 'http://localhost:9093/'
 
 alertmanager_resolve_timeout: 3m
 
-alertmanager_cli_flags: {}
-#alertmanager_cli_flags:
+alertmanager_config_flags_extra: {}
+#alertmanager_config_flags_extra:
 #  data.retention: 10
 
 # SMTP default params
@@ -45,20 +44,22 @@ alertmanager_mesh: {}
 #    - "demo.cloudalchemy.org:6783"
 
 alertmanager_receivers: []
+#alertmanager_receivers:
 #- name: slack
 #  slack_configs:
 #  - send_resolved: true
-#  - api_url: $slack_api_url
-#  - channel: '#alerts'
+#    api_url: $slack_api_url
+#    channel: '#alerts'
 
 alertmanager_inhibit_rules: []
 
-alertmanager_route:
-  group_by: ['alertname', 'cluster', 'service']
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 3h
-  receiver: slack
+alertmanager_route: {}
+#alertmanager_route:
+#  group_by: ['alertname', 'cluster', 'service']
+#  group_wait: 30s
+#  group_interval: 5m
+#  repeat_interval: 4h
+#  receiver: slack
 
 alertmanager_child_routes: []
 #alertmanager_child_routes:
