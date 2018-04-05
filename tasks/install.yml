@@ -32,8 +32,8 @@
     dest: "/tmp"
     remote_src: yes
     creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
-  register: _download_alertmanager
-  until: _download_alertmanager | success
+  register: _download_binary
+  until: _download_binary | success
   retries: 5
   delay: 2
   run_once: true
