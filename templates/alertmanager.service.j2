@@ -1,4 +1,4 @@
-{%- if alertmanager_version | version_compare('0.13.0', '>=') %}
+{%- if alertmanager_version is version_compare('0.13.0', '>=') %}
 {%- set pre = '-' %}
 {%- else %}
 {%- set pre = '' %}
