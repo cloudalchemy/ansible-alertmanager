@@ -2,7 +2,7 @@
 
 global:
   resolve_timeout: {{ alertmanager_resolve_timeout }}
-{% for key, value in alertmanager_smtp.iteritems() %}
+{% for key, value in alertmanager_smtp.items() %}
   smtp_{{ key }}: "{{ value }}"
 {% endfor %}
 {% if alertmanager_slack_api_url != '' %}
