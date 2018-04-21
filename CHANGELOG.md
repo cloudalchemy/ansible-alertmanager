@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.11.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-04-21)
+**Merged pull requests:**
+
+- don't treat false, true, null as strings when templating smtp configuration [\#36](https://github.com/cloudalchemy/ansible-alertmanager/pull/36) ([walczakp](https://github.com/walczakp))
+
 ## [0.11.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-04-13)
 **Merged pull requests:**
 
