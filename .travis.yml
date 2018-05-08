@@ -1,3 +1,4 @@
+---
 sudo: required
 language: python
 cache: pip
@@ -7,16 +8,16 @@ env:
   - ANSIBLE='ansible>=2.3.0,<2.4.0'
   - ANSIBLE='ansible>=2.4.0,<2.5.0'
   - ANSIBLE='ansible>=2.5.0,<2.6.0'
+matrix:
+  fast_finish: true
 install:
-  - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule==1.25.0' docker git-semver 'testinfra>=1.7.0,<=1.10.1'
-before_script:
-  - ansible-lint tests/playbook.yml
+  - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule>=2.13.0' docker git-semver 'testinfra>=1.7.0' jmespath
 script:
-  - molecule test
+  - molecule test -s alternative
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./.travis/releaser.sh
+  script: .travis/auto.sh
   on:
     branch: master
 branches:
