@@ -4,8 +4,12 @@
   roles:
     - ansible-alertmanager
   vars:
+    alertmanager_config_dir: /opt/am/etc
+    alertmanager_db_dir: /opt/am/lib
+    alertmanager_web_listen_address: '127.0.0.1:9093'
+    alertmanager_web_external_url: 'http://localhost:9093/alertmanager'
+    alertmanager_resolve_timeout: 10m
     alertmanager_slack_api_url: "http://example.com"
-    alertmanager_listen_address: "127.0.0.1:9093"
     alertmanager_receivers:
       - name: slack
         slack_configs:

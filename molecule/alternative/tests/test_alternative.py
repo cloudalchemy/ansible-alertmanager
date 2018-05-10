@@ -7,9 +7,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize("dirs", [
-    "/etc/alertmanager",
-    "/etc/alertmanager/templates",
-    "/var/lib/alertmanager"
+    "/opt/am/etc",
+    "/opt/am/etc/templates",
+    "/opt/am/lib"
 ])
 def test_directories(host, dirs):
     d = host.file(dirs)
@@ -20,7 +20,7 @@ def test_directories(host, dirs):
 @pytest.mark.parametrize("files", [
     "/usr/local/bin/alertmanager",
     "/usr/local/bin/amtool",
-    "/etc/alertmanager/alertmanager.yml",
+    "/opt/am/etc/alertmanager.yml",
     "/etc/systemd/system/alertmanager.service"
 ])
 def test_files(host, files):

@@ -35,8 +35,5 @@ def test_service(host):
     assert s.is_running
 
 
-@pytest.mark.parametrize("sockets", [
-    "tcp://0.0.0.0:9093"
-])
-def test_socket(host, sockets):
-    assert host.socket(sockets).is_listening
+def test_socket(host):
+    assert host.socket("tcp://0.0.0.0:9093").is_listening
