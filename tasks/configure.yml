@@ -1,7 +1,7 @@
 ---
 - name: copy alertmanager config
   template:
-    force: yes
+    force: true
     src: "{{ alertmanager_config_file }}"
     dest: "{{ alertmanager_config_dir }}/alertmanager.yml"
     owner: alertmanager
@@ -10,6 +10,3 @@
     validate: "/usr/local/bin/amtool --alertmanager.url=  check-config %s"
   notify:
     - restart alertmanager
-
-# TODO
-#- name: copy templates

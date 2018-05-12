@@ -2,16 +2,16 @@
 - name: create alertmanager system group
   group:
     name: alertmanager
-    system: yes
+    system: true
     state: present
 
 - name: create alertmanager system user
   user:
     name: alertmanager
-    system: yes
+    system: true
     shell: "/sbin/nologin"
     group: alertmanager
-    createhome: no
+    createhome: false
 
 - name: create alertmanager directories
   file:
@@ -26,11 +26,11 @@
     - "{{ alertmanager_db_dir }}"
 
 - name: download alertmanager binary to local folder
-  become: no
+  become: false
   unarchive:
     src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
-    remote_src: yes
+    remote_src: true
     creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
   register: _download_binary
   until: _download_binary is succeeded
