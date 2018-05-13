@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- upgrade to molecule 2.x [\#37](https://github.com/cloudalchemy/ansible-alertmanager/pull/37) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.11.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-04-21)
 **Merged pull requests:**
 
