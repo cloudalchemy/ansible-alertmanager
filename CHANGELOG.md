@@ -2,6 +2,10 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
 
+**Fixed bugs:**
+
+- fix architecture var parsing [\#39](https://github.com/cloudalchemy/ansible-alertmanager/pull/39) ([paulfantom](https://github.com/paulfantom))
+
 **Merged pull requests:**
 
 - Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-alertmanager/pull/38) ([Porkepix](https://github.com/Porkepix))
