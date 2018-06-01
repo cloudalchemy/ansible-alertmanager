@@ -83,8 +83,8 @@
     setype: http_port_t
     state: present
   when:
-    - ansible_os_family == "RedHat"
-    - ansible_virtualization_type != "docker"
+    - ansible_version.full is version_compare('2.4', '>=')
+    - ansible_selinux.status == "enabled"
 
 - name: remove alertmanager binaries from old location
   file:
