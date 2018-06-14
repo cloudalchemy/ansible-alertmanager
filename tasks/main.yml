@@ -1,11 +1,17 @@
 ---
 - include: preflight.yml
+  tags:
+    - always
 
 - include: install.yml
   become: true
+  tags:
+    - install
 
 - include: configure.yml
   become: true
+  tags:
+    - configure
 
 - name: ensure alertmanager service is started and enabled
   become: true
@@ -13,3 +19,5 @@
     name: alertmanager
     state: started
     enabled: true
+  tags:
+    - run
