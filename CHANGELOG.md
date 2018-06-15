@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- add tags [\#41](https://github.com/cloudalchemy/ansible-alertmanager/pull/41) ([paulfantom](https://github.com/paulfantom))
 - Fix failing role on non-SELinux RedHat [\#40](https://github.com/cloudalchemy/ansible-alertmanager/pull/40) ([noraab](https://github.com/noraab))
 - Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-alertmanager/pull/38) ([Porkepix](https://github.com/Porkepix))
 - upgrade to molecule 2.x [\#37](https://github.com/cloudalchemy/ansible-alertmanager/pull/37) ([paulfantom](https://github.com/paulfantom))
