@@ -32,6 +32,9 @@ alertmanager_pagerduty_url: ''
 alertmanager_opsgenie_api_host: ''
 alertmanager_hipchat_url: ''
 alertmanager_hipchat_auth_token: ''
+alertmanager_wechat_url: ''
+alertmanager_wechat_secret: ''
+alertmanager_wechat_corp_id: ''
 
 # First read: https://github.com/prometheus/alertmanager#high-availability
 alertmanager_mesh: {}

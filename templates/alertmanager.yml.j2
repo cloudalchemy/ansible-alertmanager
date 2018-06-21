@@ -20,6 +20,15 @@ global:
 {% if alertmanager_hipchat_auth_token != '' %}
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token }}
 {% endif %}
+{% if alertmanager_wechat_url != '' %}
+  wechat_api_url: {{ alertmanager_wechat_url }}
+{% endif %}
+{% if alertmanager_wechat_secret != '' %}
+  wechat_api_secret: {{ alertmanager_wechat_secret }}
+{% endif %}
+{% if alertmanager_wechat_corp_id != '' %}
+  wechat_api_corp_id: {{ alertmanager_wechat_corp_id }}
+{% endif %}
 templates:
 - '/etc/alertmanager/templates/*.tmpl'
 {% if alertmanager_receivers != [] %}
