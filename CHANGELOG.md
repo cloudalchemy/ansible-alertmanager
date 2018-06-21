@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.12.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-06-21)
 **Fixed bugs:**
 
 - fix architecture var parsing [\#39](https://github.com/cloudalchemy/ansible-alertmanager/pull/39) ([paulfantom](https://github.com/paulfantom))
 
 **Merged pull requests:**
 
+- add wechat configs vars [\#42](https://github.com/cloudalchemy/ansible-alertmanager/pull/42) ([soloradish](https://github.com/soloradish))
 - add tags [\#41](https://github.com/cloudalchemy/ansible-alertmanager/pull/41) ([paulfantom](https://github.com/paulfantom))
 - Fix failing role on non-SELinux RedHat [\#40](https://github.com/cloudalchemy/ansible-alertmanager/pull/40) ([noraab](https://github.com/noraab))
 - Offer a better IRC Web clients to users [\#38](https://github.com/cloudalchemy/ansible-alertmanager/pull/38) ([Porkepix](https://github.com/Porkepix))
