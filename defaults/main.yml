@@ -1,5 +1,5 @@
 ---
-alertmanager_version: 0.14.0
+alertmanager_version: 0.15.0
 
 alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
