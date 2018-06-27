@@ -14,6 +14,11 @@
     alertmanager_web_external_url: "{{ alertmanager_external_url }}"
   when: alertmanager_external_url is defined
 
+- name: HA config compatibility with alertmanager<0.15.0
+  set_fact:
+    alertmanager_cluster: "{{ alertmanager_mesh }}"
+  when: alertmanager_mesh is defined
+
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
     msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."

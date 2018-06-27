@@ -3,6 +3,11 @@
 {%- else %}
 {%- set pre = '' %}
 {%- endif %}
+{%- if alertmanager_version is version_compare('0.15.0', '<') %}
+{%- set cluster_flag = 'mesh' %}
+{%- else %}
+{%- set cluster_flag = 'cluster' %}
+{%- endif %}
 # {{ ansible_managed }}
 [Unit]
 Description=Prometheus Alertmanager
@@ -15,13 +20,13 @@ User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/alertmanager \
-{% for option, value in alertmanager_mesh.items() %}
+{% for option, value in alertmanager_cluster.items() %}
 {%   if option == "peers" %}
 {%     for peer in value %}
-  {{ pre }}-mesh.peer={{ peer }} \
+  {{ pre }}-{{ cluster_flag }}.peer={{ peer }} \
 {%     endfor %}
 {%   else %}
-  {{ pre }}-mesh.{{ option }}={{ value }} \
+  {{ pre }}-{{ cluster_flag }}.{{ option }}={{ value }} \
 {%   endif %}
 {% endfor %}
   {{ pre }}-config.file={{ alertmanager_config_dir }}/alertmanager.yml \
