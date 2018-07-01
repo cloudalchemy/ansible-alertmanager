@@ -24,10 +24,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `alertmanager_version` | 0.14.0 | Alermanager package version |
+| `alertmanager_version` | 0.15.0 | Alermanager package version |
 | `alertmanager_listen_address` | '0.0.0.0:9093' | Address on which alertmanager will be listening |
 | `alertmanager_external_url` | 'http://localhost:9093/' | External address on which alertmanager is available. Useful when behind reverse proxy. Ex. example.org/alertmanager |
-| `alertmanager_root_dir` | /opt/alertmanager | Path to directory with alertmanager and amtool binaries |
 | `alertmanager_config_dir` | /etc/alertmanager | Path to directory with alertmanager configuration |
 | `alertmanager_db_dir` | /var/lib/alertmanager | Path to directory with alertmanager database |
 | `alertmanager_config_file` | 'alertmanager.yml.j2' | Variable used to provide custom alertmanager configuration file in form of ansible template |
@@ -39,10 +38,10 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_opsgenie_api_host` | "" | Opsgenie webhook url |
 | `alertmanager_hipchat_url` | "" | Hipchat webhook url |
 | `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
-| `alertmanager_wechat_url` | "" | `Enterprise WeChat` webhook url |
-| `alertmanager_wechat_secret` | "" | `Enterprise WeChat` secret token |
-| `alertmanager_wechat_corp_id` | "" | `Enterprise WeChat` corporation id |
-| `alertmanager_mesh` | {} | HA mesh network configuration |
+| `alertmanager_wechat_url` | "" | Enterprise WeChat webhook url |
+| `alertmanager_wechat_secret` | "" | Enterprise WeChat secret token |
+| `alertmanager_wechat_corp_id` | "" | Enterprise WeChat corporation id |
+| `alertmanager_cluster` | {} | HA cluster network configuration. More information in [alertmanager readme](https://github.com/prometheus/alertmanager#high-availability) |
 | `alertmanager_receivers` | [] | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
 | `alertmanager_route` | {} | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |

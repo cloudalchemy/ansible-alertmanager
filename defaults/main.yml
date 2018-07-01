@@ -1,5 +1,5 @@
 ---
-alertmanager_version: 0.14.0
+alertmanager_version: 0.15.0
 
 alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
@@ -37,9 +37,8 @@ alertmanager_wechat_secret: ''
 alertmanager_wechat_corp_id: ''
 
 # First read: https://github.com/prometheus/alertmanager#high-availability
-alertmanager_mesh: {}
-# alertmanager_mesh:
-#   peer-id: "{{ ansible_default_ipv4.macaddress }}"
+alertmanager_cluster: {}
+# alertmanager_cluster:
 #   listen-address: "{{ ansible_default_ipv4.address }}:6783"
 #   nickname: "{{ ansible_hostname }}"
 #   peers:
