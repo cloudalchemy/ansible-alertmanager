@@ -4,6 +4,7 @@
 **Merged pull requests:**
 
 - use tox, ansible 2.6, and allow using remote docker host [\#45](https://github.com/cloudalchemy/ansible-alertmanager/pull/45) ([paulfantom](https://github.com/paulfantom))
+- bump alertmanager version to 0.15.0 [\#43](https://github.com/cloudalchemy/ansible-alertmanager/pull/43) ([paulfantom](https://github.com/paulfantom))
 
 ## [0.12.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-06-21)
 **Fixed bugs:**
