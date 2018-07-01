@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.13.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-07-01)
+**Merged pull requests:**
+
+- use tox, ansible 2.6, and allow using remote docker host [\#45](https://github.com/cloudalchemy/ansible-alertmanager/pull/45) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.12.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-06-21)
 **Fixed bugs:**
 
@@ -168,10 +173,10 @@
 ## [0.4.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-11-13)
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-16)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-05)
-## [0.3.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
-## [0.1.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
+## [0.3.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.1.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
+## [0.1.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.4](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
 ## [0.1.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-03)
