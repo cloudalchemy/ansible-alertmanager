@@ -54,6 +54,16 @@ alertmanager_receivers: []
 #         channel: '#alerts'
 
 alertmanager_inhibit_rules: []
+# alertmanager_inhibit_rules:
+#   - target_match:
+#       label: value
+#     source_match:
+#       label: value
+#     equal: ['dc', 'rack']
+#   - target_match_re:
+#       label: value1|value2
+#     source_match_re:
+#       label: value3|value5
 
 alertmanager_route: {}
 # alertmanager_route:
