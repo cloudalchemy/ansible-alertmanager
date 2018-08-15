@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.13.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-08-15)
 **Merged pull requests:**
 
 - New alertmanager upstream release! [\#48](https://github.com/cloudalchemy/ansible-alertmanager/pull/48) ([cloudalchemybot](https://github.com/cloudalchemybot))
