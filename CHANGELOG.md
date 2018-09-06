@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.13.4](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-09-06)
 ## [0.13.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-08-15)
 **Merged pull requests:**
 
@@ -185,8 +186,8 @@
 ## [0.4.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-11-13)
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-16)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-05)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
+## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.1.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.4](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
