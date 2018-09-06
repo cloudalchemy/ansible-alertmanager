@@ -16,6 +16,7 @@
 - name: ensure alertmanager service is started and enabled
   become: true
   systemd:
+    daemon_reload: true
     name: alertmanager
     state: started
     enabled: true
