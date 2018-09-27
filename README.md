@@ -25,6 +25,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `alertmanager_version` | 0.15.2 | Alermanager package version |
+| `alertmanager_package_name` | "" | Alertmanager package name. Set this if you want to install Alertmanager from a package rather than a binary. |
 | `alertmanager_listen_address` | '0.0.0.0:9093' | Address on which alertmanager will be listening |
 | `alertmanager_external_url` | 'http://localhost:9093/' | External address on which alertmanager is available. Useful when behind reverse proxy. Ex. example.org/alertmanager |
 | `alertmanager_config_dir` | /etc/alertmanager | Path to directory with alertmanager configuration |
