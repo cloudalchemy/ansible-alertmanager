@@ -1,96 +1,107 @@
 ---
-- name: create alertmanager system group
-  group:
-    name: alertmanager
-    system: true
-    state: present
+- name: Install Alertmanager
+  block:
+    - name: Install Alertmanager from package
+      package:
+        name: "{{ alertmanager_package_name }}"
+        state: present
+  when: alertmanager_package_name is defined and alertmanager_package_name != ""
 
-- name: create alertmanager system user
-  user:
-    name: alertmanager
-    system: true
-    shell: "/sbin/nologin"
-    group: alertmanager
-    createhome: false
+- name: Install Alertmanager via tarball
+  block:
+    - name: create alertmanager system group
+      group:
+        name: alertmanager
+        system: true
+        state: present
 
-- name: create alertmanager directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: alertmanager
-    group: alertmanager
-    mode: 0755
-  with_items:
-    - "{{ alertmanager_config_dir }}"
-    - "{{ alertmanager_config_dir }}/templates"
-    - "{{ alertmanager_db_dir }}"
+    - name: create alertmanager system user
+      user:
+        name: alertmanager
+        system: true
+        shell: "/sbin/nologin"
+        group: alertmanager
+        createhome: false
 
-- name: download alertmanager binary to local folder
-  become: false
-  unarchive:
-    src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    dest: "/tmp"
-    remote_src: true
-    creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
-  register: _download_binary
-  until: _download_binary is succeeded
-  retries: 5
-  delay: 2
-  # run_once: true
-  delegate_to: localhost
+    - name: create alertmanager directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: alertmanager
+        group: alertmanager
+        mode: 0755
+      with_items:
+        - "{{ alertmanager_config_dir }}"
+        - "{{ alertmanager_config_dir }}/templates"
+        - "{{ alertmanager_db_dir }}"
 
-- name: propagate alertmanager and amtool binaries
-  copy:
-    src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
-    mode: 0755
-    owner: alertmanager
-    group: alertmanager
-  with_items:
-    - alertmanager
-    - amtool
-  notify:
-    - restart alertmanager
+    - name: download alertmanager binary to local folder
+      become: false
+      unarchive:
+        src: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+        dest: "/tmp"
+        remote_src: true
+        creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/alertmanager"
+      register: _download_binary
+      until: _download_binary is succeeded
+      retries: 5
+      delay: 2
+      # run_once: true
+      delegate_to: localhost
 
-- name: create systemd service unit
-  template:
-    src: alertmanager.service.j2
-    dest: /etc/systemd/system/alertmanager.service
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - restart alertmanager
+    - name: propagate alertmanager and amtool binaries
+      copy:
+        src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
+        dest: "/usr/local/bin/{{ item }}"
+        mode: 0755
+        owner: alertmanager
+        group: alertmanager
+      with_items:
+        - alertmanager
+        - amtool
+      notify:
+        - restart alertmanager
 
-- name: Install SELinux dependencies on RedHat OS family
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - libselinux-python
-    - policycoreutils-python
-  register: _download_packages
-  until: _download_packages | success
-  retries: 5
-  delay: 2
-  when:
-    - ansible_os_family == "RedHat"
+    - name: create systemd service unit
+      template:
+        src: alertmanager.service.j2
+        dest: /etc/systemd/system/alertmanager.service
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+        - restart alertmanager
 
-- name: Allow alertmanager to bind to port in SELinux on RedHat OS family
-  seport:
-    ports: "{{ alertmanager_web_listen_address.split(':')[1] }}"
-    proto: tcp
-    setype: http_port_t
-    state: present
-  when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
+    - name: Install SELinux dependencies on RedHat OS family
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - libselinux-python
+        - policycoreutils-python
+      register: _download_packages
+      until: _download_packages | success
+      retries: 5
+      delay: 2
+      when:
+        - ansible_os_family == "RedHat"
 
-- name: remove alertmanager binaries from old location
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/alertmanager/alertmanager
-    - /opt/alertmanager/amtool
-    - /opt/alertmanager
+    - name: Allow alertmanager to bind to port in SELinux on RedHat OS family
+      seport:
+        ports: "{{ alertmanager_web_listen_address.split(':')[1] }}"
+        proto: tcp
+        setype: http_port_t
+        state: present
+      when:
+        - ansible_version.full is version_compare('2.4', '>=')
+        - ansible_selinux.status == "enabled"
+
+    - name: remove alertmanager binaries from old location
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /opt/alertmanager/alertmanager
+        - /opt/alertmanager/amtool
+        - /opt/alertmanager
+  when: alertmanager_package_name is defined and alertmanager_package_name == ""
