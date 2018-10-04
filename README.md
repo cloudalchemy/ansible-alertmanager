@@ -14,7 +14,7 @@ Deploy and manage Prometheus [alertmanager](https://github.com/prometheus/alertm
 
 ## Requirements
 
-- Ansible >= 2.4 (It could work on previous versions, but we cannot guarantee it)
+- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
 
 It would be nice to have prometheus installed somewhere
 
