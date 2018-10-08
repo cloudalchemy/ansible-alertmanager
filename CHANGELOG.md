@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.13.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-10-08)
+**Merged pull requests:**
+
+- move to ansible 2.7 [\#51](https://github.com/cloudalchemy/ansible-alertmanager/pull/51) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.13.4](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-09-06)
 ## [0.13.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-08-15)
 **Merged pull requests:**
