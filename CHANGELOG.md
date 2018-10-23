@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.13.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-10-23)
+**Merged pull requests:**
+
+- Update opsgenie global configs [\#52](https://github.com/cloudalchemy/ansible-alertmanager/pull/52) ([mrsmeds](https://github.com/mrsmeds))
+
 ## [0.13.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-10-08)
 **Merged pull requests:**
 
