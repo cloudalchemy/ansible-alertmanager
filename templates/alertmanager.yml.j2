@@ -11,8 +11,11 @@ global:
 {% if alertmanager_pagerduty_url != '' %}
   pagerduty_url: {{ alertmanager_pagerduty_url }}
 {% endif %}
-{% if alertmanager_opsgenie_api_host != '' %}
-  opsgenie_api_host: {{ alertmanager_opsgenie_api_host }}
+{% if alertmanager_opsgenie_api_key != '' %}
+  opsgenie_api_key: {{ alertmanager_opsgenie_api_key }}
+{% endif %}
+{% if alertmanager_opsgenie_api_url != '' %}
+  opsgenie_api_url: {{ alertmanager_opsgenie_api_url }}
 {% endif %}
 {% if alertmanager_hipchat_url != '' %}
   hipchat_url: {{ alertmanager_hipchat_url }}
