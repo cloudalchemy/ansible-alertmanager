@@ -41,7 +41,6 @@ alertmanager_wechat_corp_id: ''
 alertmanager_cluster: {}
 # alertmanager_cluster:
 #   listen-address: "{{ ansible_default_ipv4.address }}:6783"
-#   nickname: "{{ ansible_hostname }}"
 #   peers:
 #     - "{{ ansible_default_ipv4.address }}:6783"
 #     - "demo.cloudalchemy.org:6783"
