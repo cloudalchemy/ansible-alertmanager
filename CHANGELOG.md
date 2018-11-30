@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.13.7](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-11-30)
 **Merged pull requests:**
 
+- New alertmanager upstream release! [\#55](https://github.com/cloudalchemy/ansible-alertmanager/pull/55) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - fix tags, remove always [\#54](https://github.com/cloudalchemy/ansible-alertmanager/pull/54) ([rlex](https://github.com/rlex))
 - Fix: --cluster.nickname does not exist in 0.15.2 [\#53](https://github.com/cloudalchemy/ansible-alertmanager/pull/53) ([till](https://github.com/till))
 
