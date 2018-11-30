@@ -52,16 +52,6 @@
   notify:
     - restart alertmanager
 
-- name: create systemd service unit
-  template:
-    src: alertmanager.service.j2
-    dest: /etc/systemd/system/alertmanager.service
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - restart alertmanager
-
 - name: Install SELinux dependencies on RedHat OS family
   package:
     name: "{{ item }}"
