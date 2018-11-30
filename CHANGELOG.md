@@ -1,9 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- fix tags, remove always [\#54](https://github.com/cloudalchemy/ansible-alertmanager/pull/54) ([rlex](https://github.com/rlex))
+- Fix: --cluster.nickname does not exist in 0.15.2 [\#53](https://github.com/cloudalchemy/ansible-alertmanager/pull/53) ([till](https://github.com/till))
+
 ## [0.13.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-10-23)
 **Merged pull requests:**
 
-- Update opsgenie global configs [\#52](https://github.com/cloudalchemy/ansible-alertmanager/pull/52) ([mrsmeds](https://github.com/mrsmeds))
+- Update opsgenie global configs [\#52](https://github.com/cloudalchemy/ansible-alertmanager/pull/52) ([nikosmeds](https://github.com/nikosmeds))
 
 ## [0.13.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-10-08)
 **Merged pull requests:**
