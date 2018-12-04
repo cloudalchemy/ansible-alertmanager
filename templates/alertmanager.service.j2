@@ -8,7 +8,7 @@
 {%- else %}
 {%- set cluster_flag = 'cluster' %}
 {%- endif %}
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 [Unit]
 Description=Prometheus Alertmanager
 After=network.target
