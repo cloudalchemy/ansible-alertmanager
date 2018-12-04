@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Fixed bugs:**
+
+- Service command line flags set during `install` but not during `configure` [\#56](https://github.com/cloudalchemy/ansible-alertmanager/issues/56)
+
+**Merged pull requests:**
+
+- Add support for multi-line ansible\_managed strings [\#58](https://github.com/cloudalchemy/ansible-alertmanager/pull/58) ([etcet](https://github.com/etcet))
+
 ## [0.13.8](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-12-03)
 **Merged pull requests:**
 
