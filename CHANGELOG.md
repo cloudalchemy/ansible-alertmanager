@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Fix typo in preflight checks for routes [\#59](https://github.com/cloudalchemy/ansible-alertmanager/pull/59) ([slomo](https://github.com/slomo))
 - Add support for multi-line ansible\_managed strings [\#58](https://github.com/cloudalchemy/ansible-alertmanager/pull/58) ([etcet](https://github.com/etcet))
 
 ## [0.13.8](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2018-12-03)
