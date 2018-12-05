@@ -36,7 +36,7 @@
 - name: Fail when there is no alert route defined
   fail:
     msg: "Configure alert routing (`alertmanager_route`). Otherwise alertmanager won't know how to send alerts."
-  when: alertmanager_receivers == {}
+  when: alertmanager_route == {}
 
 - name: Fail when child routes are defined not in proper place
   fail:
