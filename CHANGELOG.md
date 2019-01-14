@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.13.9](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-01-14)
 **Fixed bugs:**
 
 - Service command line flags set during `install` but not during `configure` [\#56](https://github.com/cloudalchemy/ansible-alertmanager/issues/56)
 
 **Merged pull requests:**
 
+- Fix faulty hipchat configuration parameters [\#61](https://github.com/cloudalchemy/ansible-alertmanager/pull/61) ([schewara](https://github.com/schewara))
 - Fix typo in preflight checks for routes [\#59](https://github.com/cloudalchemy/ansible-alertmanager/pull/59) ([slomo](https://github.com/slomo))
 - Add support for multi-line ansible\_managed strings [\#58](https://github.com/cloudalchemy/ansible-alertmanager/pull/58) ([etcet](https://github.com/etcet))
 
