@@ -14,7 +14,7 @@
       - name: slack
         slack_configs:
           - send_resolved: true
-            api_url: $slack_api_url
+            api_url: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'
             channel: '#alerts'
     alertmanager_route:
       group_by: ['alertname', 'cluster', 'service']
