@@ -38,6 +38,7 @@
   delay: 2
   # run_once: true
   delegate_to: localhost
+  check_mode: false
 
 - name: propagate alertmanager and amtool binaries
   copy:
