@@ -61,7 +61,7 @@
     - libselinux-python
     - policycoreutils-python
   register: _download_packages
-  until: _download_packages | success
+  until: _download_packages is success
   retries: 5
   delay: 2
   when:
