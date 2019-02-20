@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- changed 'result|success' to 'result is success' in install.yml file t… [\#64](https://github.com/cloudalchemy/ansible-alertmanager/pull/64) ([sardarhalip](https://github.com/sardarhalip))
 - Download package locally during check mode [\#63](https://github.com/cloudalchemy/ansible-alertmanager/pull/63) ([etcet](https://github.com/etcet))
 
 ## [0.13.9](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-01-14)
