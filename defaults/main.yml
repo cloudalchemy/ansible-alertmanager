@@ -1,5 +1,5 @@
 ---
-alertmanager_version: 0.15.3
+alertmanager_version: 0.16.1
 
 alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
@@ -50,7 +50,6 @@ alertmanager_receivers: []
 #   - name: slack
 #     slack_configs:
 #       - send_resolved: true
-#         api_url: $slack_api_url
 #         channel: '#alerts'
 
 alertmanager_inhibit_rules: []
