@@ -1,11 +1,11 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.13.10](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-03-04)
 **Merged pull requests:**
 
 - changed 'result|success' to 'result is success' in install.yml file t… [\#64](https://github.com/cloudalchemy/ansible-alertmanager/pull/64) ([sardarhalip](https://github.com/sardarhalip))
 - Download package locally during check mode [\#63](https://github.com/cloudalchemy/ansible-alertmanager/pull/63) ([etcet](https://github.com/etcet))
+- New alertmanager upstream release and template improvements [\#62](https://github.com/cloudalchemy/ansible-alertmanager/pull/62) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [0.13.9](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-01-14)
 **Fixed bugs:**
