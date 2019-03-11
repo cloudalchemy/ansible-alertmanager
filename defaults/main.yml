@@ -24,7 +24,7 @@ alertmanager_smtp: {}
 #   auth_password: ''
 #   auth_secret: ''
 #   auth_identity: ''
-#   auth_require_tls: "True"
+#   require_tls: "True"
 
 # Default values you can see here -> https://prometheus.io/docs/alerting/configuration/
 alertmanager_slack_api_url: ''
