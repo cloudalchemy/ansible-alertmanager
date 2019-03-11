@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- Change auth\_require\_tls to require\_tls [\#65](https://github.com/cloudalchemy/ansible-alertmanager/pull/65) ([lunarthegrey](https://github.com/lunarthegrey))
+
 ## [0.13.10](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-03-04)
 **Merged pull requests:**
 
