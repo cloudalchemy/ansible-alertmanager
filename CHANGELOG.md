@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.13.11](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-04-05)
 **Merged pull requests:**
 
+- New prometheus/alertmanager upstream release! [\#66](https://github.com/cloudalchemy/ansible-alertmanager/pull/66) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Change auth\_require\_tls to require\_tls [\#65](https://github.com/cloudalchemy/ansible-alertmanager/pull/65) ([lunarthegrey](https://github.com/lunarthegrey))
 
 ## [0.13.10](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-03-04)
