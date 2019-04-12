@@ -9,6 +9,8 @@ alertmanager_config_file: 'alertmanager.yml.j2'
 alertmanager_web_listen_address: '0.0.0.0:9093'
 alertmanager_web_external_url: 'http://localhost:9093/'
 
+alertmanager_http_proxy_url: ''
+
 alertmanager_resolve_timeout: 3m
 
 alertmanager_config_flags_extra: {}
