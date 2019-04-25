@@ -8,8 +8,11 @@ global:
 {% if alertmanager_slack_api_url | length %}
   slack_api_url: {{ alertmanager_slack_api_url | quote }}
 {% endif %}
+{% if alertmanager_http_config | length %}
+  http_config:
+{% endif %}
 {% for key, value in alertmanager_http_config.items() %}
-  {{ key }}: {{ value | quote }}
+    {{ key }}: {{ value | quote }}
 {% endfor %}
 {% if alertmanager_pagerduty_url | length %}
   pagerduty_url: {{ alertmanager_pagerduty_url | quote }}
