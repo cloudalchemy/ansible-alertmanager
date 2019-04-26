@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- added proxy support [\#67](https://github.com/cloudalchemy/ansible-alertmanager/pull/67) ([thirdeye-oleksandr](https://github.com/thirdeye-oleksandr))
+
 ## [0.13.11](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-04-05)
 **Merged pull requests:**
 
