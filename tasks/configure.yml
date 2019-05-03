@@ -20,3 +20,13 @@
     mode: 0644
   notify:
     - restart alertmanager
+
+- name: copy alertmanager template files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ alertmanager_config_dir }}/templates/"
+    force: true
+    owner: alertmanager
+    group: alertmanager
+    mode: 0644
+  with_fileglob: "{{ alertmanager_template_files }}"
