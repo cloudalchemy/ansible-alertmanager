@@ -11,7 +11,7 @@
 {{ ansible_managed | comment }}
 [Unit]
 Description=Prometheus Alertmanager
-After=network.target
+After=network-online.target
 
 [Service]
 Type=simple
