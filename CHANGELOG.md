@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- New prometheus/alertmanager upstream release! [\#69](https://github.com/cloudalchemy/ansible-alertmanager/pull/69) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.13.12](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-05-04)
 **Merged pull requests:**
 
