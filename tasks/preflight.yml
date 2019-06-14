@@ -1,4 +1,49 @@
 ---
+- name: Assert usage of systemd as an init system
+  assert:
+    that: ansible_service_mgr == 'systemd'
+    msg: "This module only works with systemd"
+
+- name: Get systemd version
+  command: systemctl --version
+  changed_when: false
+  check_mode: false
+  register: __systemd_version
+  tags:
+    - skip_ansible_lint
+
+- name: Set systemd version fact
+  set_fact:
+    alertmanager_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[-1] }}"
+
+- block:
+    - name: Get latest release
+      uri:
+        url: "https://api.github.com/repos/prometheus/alertmanager/releases/latest"
+        method: GET
+        return_content: true
+        status_code: 200
+        body_format: json
+        validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: true
+      register: _latest_release
+      until: _latest_release.status == 200
+      retries: 5
+
+    - name: "Set prometheus version to {{ _latest_release.json.tag_name[1:] }}"
+      set_fact:
+        alertmanager_version: "{{ _latest_release.json.tag_name[1:] }}"
+  when: alertmanager_version == "latest"
+
+- name: "Get checksum for {{ go_arch }} architecture"
+  set_fact:
+    alertmanager_checksum: "{{ item.split(' ')[0] }}"
+  with_items:
+    - "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list }}"
+  when: "('linux-' + go_arch + '.tar.gz') in item"
+
 - name: Backward compatibility of variable [part 1]
   set_fact:
     alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
