@@ -6,6 +6,9 @@ alertmanager_db_dir: /var/lib/alertmanager
 
 alertmanager_config_file: 'alertmanager.yml.j2'
 
+alertmanager_template_files:
+  - alertmanager/templates/*.tmpl
+
 alertmanager_web_listen_address: '0.0.0.0:9093'
 alertmanager_web_external_url: 'http://localhost:9093/'
 

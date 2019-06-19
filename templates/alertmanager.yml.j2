@@ -39,7 +39,7 @@ global:
   wechat_api_corp_id: {{ alertmanager_wechat_corp_id | quote }}
 {% endif %}
 templates:
-- '/etc/alertmanager/templates/*.tmpl'
+- '{{ alertmanager_config_dir }}/templates/*.tmpl'
 {% if alertmanager_receivers | length %}
 receivers:
 {{ alertmanager_receivers | to_nice_yaml(indent=2) }}
