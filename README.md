@@ -31,6 +31,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_db_dir` | /var/lib/alertmanager | Path to directory with alertmanager database |
 | `alertmanager_config_file` | 'alertmanager.yml.j2' | Variable used to provide custom alertmanager configuration file in form of ansible template |
 | `alertmanager_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
+| `alertmanager_template_files` | [alertmanager/templates/*.tmpl] | List of folders where ansible will look for template files which will be copied to `{{ alertmanager_config_dir }}/templates/`. Files must have `*.tmpl` extension |
 | `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
 | `alertmanager_smtp` | {} | SMTP (email) configuration |
 | `alertmanager_slack_api_url` | "" | Slack webhook url |
