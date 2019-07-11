@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.14.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-07-11)
 **Merged pull requests:**
 
+- New prometheus/alertmanager upstream release! [\#73](https://github.com/cloudalchemy/ansible-alertmanager/pull/73) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/alertmanager upstream release! [\#69](https://github.com/cloudalchemy/ansible-alertmanager/pull/69) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - support copying of alertmanager templates [\#68](https://github.com/cloudalchemy/ansible-alertmanager/pull/68) ([mjbnz](https://github.com/mjbnz))
 
