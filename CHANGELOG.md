@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- Synchronize files from cloudalchemy/skeleton [\#75](https://github.com/cloudalchemy/ansible-alertmanager/pull/75) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [0.14.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-07-11)
 **Merged pull requests:**
 
