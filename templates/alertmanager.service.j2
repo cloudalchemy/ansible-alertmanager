@@ -12,6 +12,8 @@
 [Unit]
 Description=Prometheus Alertmanager
 After=network-online.target
+StartLimitInterval=0
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
@@ -37,6 +39,26 @@ ExecStart=/usr/local/bin/alertmanager \
 
 SyslogIdentifier=alertmanager
 Restart=always
+RestartSec=5
+
+CapabilityBoundingSet=CAP_SET_UID
+LockPersonality=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+PrivateTmp=true
+ProtectHome=true
+RemoveIPC=true
+RestrictSUIDSGID=true
+
+{% if alertmanager_systemd_version | int >= 232 %}
+PrivateUsers=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+ProtectSystem=strict
+{% else %}
+ProtectSystem=full
+{% endif %}
 
 [Install]
 WantedBy=multi-user.target
