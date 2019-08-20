@@ -7,9 +7,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize("files", [
-    "/etc/systemd/system/prometheus.service",
-    "/usr/local/bin/prometheus",
-    "/usr/local/bin/promtool"
+    "/etc/systemd/system/alertmanager.service",
+    "/usr/local/bin/alertmanager",
+    "/usr/local/bin/amtool"
 ])
 def test_files(host, files):
     f = host.file(files)
@@ -18,11 +18,11 @@ def test_files(host, files):
 
 
 def test_service(host):
-    s = host.service("prometheus")
+    s = host.service("alertmanager")
     # assert s.is_enabled
     assert s.is_running
 
 
 def test_socket(host):
-    s = host.socket("tcp://0.0.0.0:9090")
+    s = host.socket("tcp://0.0.0.0:9093")
     assert s.is_listening
