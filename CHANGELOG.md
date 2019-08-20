@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Update minimum required ansible version [\#78](https://github.com/cloudalchemy/ansible-alertmanager/pull/78) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#77](https://github.com/cloudalchemy/ansible-alertmanager/pull/77) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#75](https://github.com/cloudalchemy/ansible-alertmanager/pull/75) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
