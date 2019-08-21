@@ -1,5 +1,12 @@
 #!/bin/bash
 
+set -euo pipefail
+
+if [ ! -d "./molecule/latest" ]; then
+	tox
+	exit 0
+fi
+
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 	tox -- molecule test --all --destroy never
 else

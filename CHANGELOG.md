@@ -12,6 +12,8 @@
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#86](https://github.com/cloudalchemy/ansible-alertmanager/pull/86) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- add support for RHEL8 \(without automated testing\) [\#84](https://github.com/cloudalchemy/ansible-alertmanager/pull/84) ([paulfantom](https://github.com/paulfantom))
 - drop testing on debian jessie and add support for debian buster [\#82](https://github.com/cloudalchemy/ansible-alertmanager/pull/82) ([paulfantom](https://github.com/paulfantom))
 - update to fedora 30 and bring in mechanism for installing SELinux deps known from ansible-prometheus [\#81](https://github.com/cloudalchemy/ansible-alertmanager/pull/81) ([paulfantom](https://github.com/paulfantom))
 - increase systemd service security restrictions [\#80](https://github.com/cloudalchemy/ansible-alertmanager/pull/80) ([paulfantom](https://github.com/paulfantom))
