@@ -25,6 +25,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `alertmanager_version` | 0.19.0 | Alertmanager package version. Also accepts `latest` as parameter. |
+| `alertmanager_binaries_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `alertmanager` AND `amtool` binaries are stored on host on which ansible is ran. This overrides `alertmanager_version` parameter |
 | `alertmanager_web_listen_address` | 0.0.0.0:9093 | Address on which alertmanager will be listening |
 | `alertmanager_web_external_url` | http://localhost:9093/ | External address on which alertmanager is available. Useful when behind reverse proxy. Ex. example.org/alertmanager |
 | `alertmanager_config_dir` | /etc/alertmanager | Path to directory with alertmanager configuration |

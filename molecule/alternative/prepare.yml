@@ -1,5 +1,25 @@
 ---
 - name: Prepare
-  hosts: all
+  hosts: localhost
   gather_facts: false
-  tasks: []
+  tasks:
+    - name: download alertmanager binary to local folder
+      become: false
+      get_url:
+        url: "https://github.com/prometheus/alertmanager/releases/download/v0.18.0/alertmanager-0.18.0.linux-amd64.tar.gz"
+        dest: "/tmp/alertmanager-0.18.0.linux-amd64.tar.gz"
+      register: _download_archive
+      until: _download_archive is succeeded
+      retries: 5
+      delay: 2
+      run_once: true
+      check_mode: false
+
+    - name: unpack alertmanager binaries
+      become: false
+      unarchive:
+        src: "/tmp/alertmanager-0.18.0.linux-amd64.tar.gz"
+        dest: "/tmp"
+        creates: "/tmp/alertmanager-0.18.0.linux-amd64/alertmanager"
+      run_once: true
+      check_mode: false

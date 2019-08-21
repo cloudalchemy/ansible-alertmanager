@@ -4,6 +4,7 @@
   roles:
     - ansible-alertmanager
   vars:
+    alertmanager_binary_local_dir: '/tmp/alertmanager-0.18.0.linux-amd64'
     alertmanager_config_dir: /opt/am/etc
     alertmanager_db_dir: /opt/am/lib
     alertmanager_web_listen_address: '127.0.0.1:9093'
