@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- drop testing on debian jessie and add support for debian buster [\#82](https://github.com/cloudalchemy/ansible-alertmanager/pull/82) ([paulfantom](https://github.com/paulfantom))
 - update to fedora 30 and bring in mechanism for installing SELinux deps known from ansible-prometheus [\#81](https://github.com/cloudalchemy/ansible-alertmanager/pull/81) ([paulfantom](https://github.com/paulfantom))
 - increase systemd service security restrictions [\#80](https://github.com/cloudalchemy/ansible-alertmanager/pull/80) ([paulfantom](https://github.com/paulfantom))
 - propagate support for 'latest' version specifier from ansible-prometheus [\#79](https://github.com/cloudalchemy/ansible-alertmanager/pull/79) ([paulfantom](https://github.com/paulfantom))
