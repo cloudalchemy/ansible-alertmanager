@@ -65,15 +65,14 @@
   package:
     name: "{{ item }}"
     state: present
-  with_items:
-    - libselinux-python
-    - policycoreutils-python
-  register: _download_packages
-  until: _download_packages is success
+  with_items: "{{ alertmanager_selinux_packages }}"
+  register: _install_packages
+  until: _install_packages is success
   retries: 5
   delay: 2
   when:
-    - ansible_os_family == "RedHat"
+    - ansible_version.full is version_compare('2.4', '>=')
+    - ansible_selinux.status == "enabled"
 
 - name: Allow alertmanager to bind to port in SELinux on RedHat OS family
   seport:
