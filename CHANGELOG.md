@@ -4,6 +4,8 @@
 
 **Merged pull requests:**
 
+- increase systemd service security restrictions [\#80](https://github.com/cloudalchemy/ansible-alertmanager/pull/80) ([paulfantom](https://github.com/paulfantom))
+- propagate support for 'latest' version specifier from ansible-prometheus [\#79](https://github.com/cloudalchemy/ansible-alertmanager/pull/79) ([paulfantom](https://github.com/paulfantom))
 - Update minimum required ansible version [\#78](https://github.com/cloudalchemy/ansible-alertmanager/pull/78) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#77](https://github.com/cloudalchemy/ansible-alertmanager/pull/77) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#75](https://github.com/cloudalchemy/ansible-alertmanager/pull/75) ([cloudalchemybot](https://github.com/cloudalchemybot))
