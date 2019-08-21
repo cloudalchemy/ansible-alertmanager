@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych
+  author: Roman Demachkovych, Pawel Krupa
   description: Prometheus Alertmanager service
   license: MIT
   company: none
@@ -14,6 +14,7 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+        - buster
     - name: EL
       versions:
         - 7
