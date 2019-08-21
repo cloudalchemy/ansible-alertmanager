@@ -2,8 +2,17 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
 
+**Implemented enhancements:**
+
+- Allow using `latest` as a version specifier [\#44](https://github.com/cloudalchemy/ansible-alertmanager/issues/44)
+
+**Closed issues:**
+
+- systemd: Failed to start Alertmanager \(when Prometheus is not running yet\) [\#74](https://github.com/cloudalchemy/ansible-alertmanager/issues/74)
+
 **Merged pull requests:**
 
+- update to fedora 30 and bring in mechanism for installing SELinux deps known from ansible-prometheus [\#81](https://github.com/cloudalchemy/ansible-alertmanager/pull/81) ([paulfantom](https://github.com/paulfantom))
 - increase systemd service security restrictions [\#80](https://github.com/cloudalchemy/ansible-alertmanager/pull/80) ([paulfantom](https://github.com/paulfantom))
 - propagate support for 'latest' version specifier from ansible-prometheus [\#79](https://github.com/cloudalchemy/ansible-alertmanager/pull/79) ([paulfantom](https://github.com/paulfantom))
 - Update minimum required ansible version [\#78](https://github.com/cloudalchemy/ansible-alertmanager/pull/78) ([cloudalchemybot](https://github.com/cloudalchemybot))
