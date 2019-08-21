@@ -6,8 +6,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: stretch
-    image: paulfantom/debian-molecule:9
+  - name: buster
+    image: paulfantom/debian-molecule:10
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
