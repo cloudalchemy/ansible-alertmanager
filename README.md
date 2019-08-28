@@ -43,7 +43,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_wechat_url` | "" | Enterprise WeChat webhook url |
 | `alertmanager_wechat_secret` | "" | Enterprise WeChat secret token |
 | `alertmanager_wechat_corp_id` | "" | Enterprise WeChat corporation id |
-| `alertmanager_cluster` | {} | HA cluster network configuration. More information in [alertmanager readme](https://github.com/prometheus/alertmanager#high-availability) |
+| `alertmanager_cluster` | {listen-address: ""} | HA cluster network configuration. Disabled by default. More information in [alertmanager readme](https://github.com/prometheus/alertmanager#high-availability) |
 | `alertmanager_receivers` | [] | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
 | `alertmanager_route` | {} | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |

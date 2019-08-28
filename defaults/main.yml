@@ -43,7 +43,8 @@ alertmanager_wechat_secret: ''
 alertmanager_wechat_corp_id: ''
 
 # First read: https://github.com/prometheus/alertmanager#high-availability
-alertmanager_cluster: {}
+alertmanager_cluster:
+  listen-address: ""
 # alertmanager_cluster:
 #   listen-address: "{{ ansible_default_ipv4.address }}:6783"
 #   peers:
