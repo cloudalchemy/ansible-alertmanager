@@ -8,10 +8,12 @@
 
 **Closed issues:**
 
+- cluster setup broken in default [\#87](https://github.com/cloudalchemy/ansible-alertmanager/issues/87)
 - systemd: Failed to start Alertmanager \(when Prometheus is not running yet\) [\#74](https://github.com/cloudalchemy/ansible-alertmanager/issues/74)
 
 **Merged pull requests:**
 
+- New prometheus/alertmanager upstream release! [\#89](https://github.com/cloudalchemy/ansible-alertmanager/pull/89) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Cluster fix [\#88](https://github.com/cloudalchemy/ansible-alertmanager/pull/88) ([gajowi](https://github.com/gajowi))
 - Synchronize files from cloudalchemy/skeleton [\#86](https://github.com/cloudalchemy/ansible-alertmanager/pull/86) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add support for RHEL8 \(without automated testing\) [\#84](https://github.com/cloudalchemy/ansible-alertmanager/pull/84) ([paulfantom](https://github.com/paulfantom))
