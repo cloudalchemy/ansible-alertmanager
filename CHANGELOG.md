@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.15.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-10-02)
 **Implemented enhancements:**
 
 - Allow using `latest` as a version specifier [\#44](https://github.com/cloudalchemy/ansible-alertmanager/issues/44)
@@ -13,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Adjust systemd restrictions [\#90](https://github.com/cloudalchemy/ansible-alertmanager/pull/90) ([corny](https://github.com/corny))
 - New prometheus/alertmanager upstream release! [\#89](https://github.com/cloudalchemy/ansible-alertmanager/pull/89) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Cluster fix [\#88](https://github.com/cloudalchemy/ansible-alertmanager/pull/88) ([gajowi](https://github.com/gajowi))
 - Synchronize files from cloudalchemy/skeleton [\#86](https://github.com/cloudalchemy/ansible-alertmanager/pull/86) ([cloudalchemybot](https://github.com/cloudalchemybot))
