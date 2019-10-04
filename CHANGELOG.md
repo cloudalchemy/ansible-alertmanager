@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- make order of cluster args deterministic [\#91](https://github.com/cloudalchemy/ansible-alertmanager/pull/91) ([slomo](https://github.com/slomo))
+
 ## [0.15.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-10-02)
 **Implemented enhancements:**
 
