@@ -22,7 +22,7 @@ User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/alertmanager \
-{% for option, value in alertmanager_cluster.items() %}
+{% for option, value in (alertmanager_cluster.items() | sort) %}
 {%   if option == "peers" %}
 {%     for peer in value %}
   {{ pre }}-{{ cluster_flag }}.peer={{ peer }} \
