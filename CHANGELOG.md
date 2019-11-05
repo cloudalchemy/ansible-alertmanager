@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] Update releaser.sh [\#93](https://github.com/cloudalchemy/ansible-alertmanager/pull/93) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add support for CentOS8 [\#92](https://github.com/cloudalchemy/ansible-alertmanager/pull/92) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - make order of cluster args deterministic [\#91](https://github.com/cloudalchemy/ansible-alertmanager/pull/91) ([slomo](https://github.com/slomo))
 
