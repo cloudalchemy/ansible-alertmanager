@@ -1,5 +1,6 @@
 # Change Log
 
+
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
 
 **Merged pull requests:**
