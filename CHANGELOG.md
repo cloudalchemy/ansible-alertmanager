@@ -1,8 +1,6 @@
 # Change Log
 
-
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.15.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-11-11)
 **Merged pull requests:**
 
 - \[REPO SYNC\] Update releaser.sh [\#93](https://github.com/cloudalchemy/ansible-alertmanager/pull/93) ([cloudalchemybot](https://github.com/cloudalchemybot))
