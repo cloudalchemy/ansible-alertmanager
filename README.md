@@ -55,9 +55,46 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 ### Playbook
 
 ```yaml
+---
 - hosts: all
+  any_errors_fatal: true
   roles:
-    - cloudalchemy.alertmanager
+    - ansible-alertmanager
+  vars:
+    alertmanager_binary_local_dir: '/tmp/alertmanager-linux-amd64'
+    alertmanager_config_dir: /opt/am/etc
+    alertmanager_db_dir: /opt/am/lib
+    alertmanager_web_listen_address: '127.0.0.1:9093'
+    alertmanager_web_external_url: 'http://localhost:9093/alertmanager'
+    alertmanager_resolve_timeout: 10m
+    alertmanager_slack_api_url: "http://example.com"
+    alertmanager_receivers:
+      - name: slack
+        slack_configs:
+          - send_resolved: true
+            api_url: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'
+            channel: '#alerts'
+      - name: infra-ml
+        email_configs:
+          - to: "infra@example.com"
+            from: "monitoring@example.com"
+            smarthost: "smtp.gmail.com:587"
+            auth_username: "monitoring@example.com"
+            auth_identity: "monitoring@example.com"
+            auth_password: UseGmailAppToken
+    alertmanager_route:
+      group_by: ['alertname', 'cluster', 'service']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 3h
+      receiver: slack
+    alertmanager_child_routes:
+      - group_by: ["..."]
+        receiver: infra-ml
+    alertmanager_mesh:
+      listen-address: "127.0.0.1:6783"
+      peers:
+        - "127.0.0.1:6783"
 ```
 
 ### Demo site
