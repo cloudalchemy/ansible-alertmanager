@@ -30,3 +30,6 @@
     group: alertmanager
     mode: 0644
   with_fileglob: "{{ alertmanager_template_files }}"
+  notify:
+    - restart alertmanager
+
