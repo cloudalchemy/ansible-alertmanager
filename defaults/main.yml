@@ -78,9 +78,6 @@ alertmanager_route: {}
 #   group_interval: 5m
 #   repeat_interval: 4h
 #   receiver: slack
-
-alertmanager_child_routes: []
-# alertmanager_child_routes:
 #   # This routes performs a regular expression match on alert labels to
 #   # catch alerts that are related to a list of services.
 #     - match_re:

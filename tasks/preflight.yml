@@ -63,6 +63,11 @@
     alertmanager_web_external_url: "{{ alertmanager_external_url }}"
   when: alertmanager_external_url is defined
 
+- name: Backward compatibility of variable [part 4]
+  set_fact:
+    alertmanager_route: "{{ alertmanager_route | combine({'routes': alertmanager_child_routes}) }}"
+  when: alertmanager_child_routes is defined
+
 - name: HA config compatibility with alertmanager<0.15.0
   set_fact:
     alertmanager_cluster: "{{ alertmanager_mesh }}"
@@ -91,7 +96,7 @@
     - alertmanager_config_file == 'alertmanager.yml.j2'
     - alertmanager_route == {}
 
-- name: Fail when child routes are defined not in proper place
-  fail:
-    msg: "Please reconfigure `alertmanager_route` so that child routes are placed in `alertmanager_child_routes`."
-  when: alertmanager_route.routes is defined
+- name: "DEPRECATION WARNING: `alertmanager_child_routes` is no longer supported"
+  debug:
+    msg: "Please move content of `alertmanager_child_routes` to `alertmanager_route.routes` as the former variable is deprecated and will be removed in future versions."
+  when: alertmanager_child_routes is defined
