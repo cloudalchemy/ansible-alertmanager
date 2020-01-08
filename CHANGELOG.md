@@ -1,5 +1,22 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Implemented enhancements:**
+
+- Having the choice to install the package or not [\#49](https://github.com/cloudalchemy/ansible-alertmanager/issues/49)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] use latest available python [\#107](https://github.com/cloudalchemy/ansible-alertmanager/pull/107) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] remove IRC link [\#105](https://github.com/cloudalchemy/ansible-alertmanager/pull/105) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/alertmanager upstream release! [\#104](https://github.com/cloudalchemy/ansible-alertmanager/pull/104) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Do not fail when using a custom config template file [\#103](https://github.com/cloudalchemy/ansible-alertmanager/pull/103) ([DaazKu](https://github.com/DaazKu))
+- Add restart handler on configuration template change [\#102](https://github.com/cloudalchemy/ansible-alertmanager/pull/102) ([iwagner-inmar](https://github.com/iwagner-inmar))
+- \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#97](https://github.com/cloudalchemy/ansible-alertmanager/pull/97) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#95](https://github.com/cloudalchemy/ansible-alertmanager/pull/95) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- add option to propagate binaries without access to internet [\#83](https://github.com/cloudalchemy/ansible-alertmanager/pull/83) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.15.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2019-11-11)
 **Merged pull requests:**
 
