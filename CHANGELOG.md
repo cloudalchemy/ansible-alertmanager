@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.16.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-01-11)
 **Implemented enhancements:**
 
 - Having the choice to install the package or not [\#49](https://github.com/cloudalchemy/ansible-alertmanager/issues/49)
 
 **Merged pull requests:**
 
+- Switch user login shell to /usr/sbin/nologin [\#108](https://github.com/cloudalchemy/ansible-alertmanager/pull/108) ([paulfantom](https://github.com/paulfantom))
 - \[REPO SYNC\] use latest available python [\#107](https://github.com/cloudalchemy/ansible-alertmanager/pull/107) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] remove IRC link [\#105](https://github.com/cloudalchemy/ansible-alertmanager/pull/105) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/alertmanager upstream release! [\#104](https://github.com/cloudalchemy/ansible-alertmanager/pull/104) ([cloudalchemybot](https://github.com/cloudalchemybot))
@@ -295,8 +295,8 @@
 ## [0.4.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-11-13)
 ## [0.4.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-16)
 ## [0.3.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-10-05)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.3.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
+## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.1.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
