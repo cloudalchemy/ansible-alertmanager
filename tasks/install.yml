@@ -9,7 +9,7 @@
   user:
     name: alertmanager
     system: true
-    shell: "/sbin/nologin"
+    shell: "/usr/sbin/nologin"
     group: alertmanager
     createhome: false
 
