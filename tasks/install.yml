@@ -76,26 +76,3 @@
   when: alertmanager_binary_local_dir | length > 0
   notify:
     - restart alertmanager
-
-- name: Install SELinux dependencies on RedHat OS family
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ alertmanager_selinux_packages }}"
-  register: _install_packages
-  until: _install_packages is success
-  retries: 5
-  delay: 2
-  when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
-
-- name: Allow alertmanager to bind to port in SELinux on RedHat OS family
-  seport:
-    ports: "{{ alertmanager_web_listen_address.split(':')[1] }}"
-    proto: tcp
-    setype: http_port_t
-    state: present
-  when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
