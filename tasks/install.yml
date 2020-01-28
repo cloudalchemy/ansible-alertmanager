@@ -52,7 +52,7 @@
     - name: propagate official alertmanager and amtool binaries
       copy:
         src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}/{{ item }}"
-        dest: "/usr/local/bin/{{ item }}"
+        dest: "{{ _alertmanager_binary_install_dir }}/{{ item }}"
         mode: 0755
         owner: root
         group: root
@@ -66,7 +66,7 @@
 - name: propagate locally distributed alertmanager and amtool binaries
   copy:
     src: "{{ alertmanager_binary_local_dir }}/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
+    dest: "{{ _alertmanager_binary_install_dir }}/{{ item }}"
     mode: 0755
     owner: root
     group: root
