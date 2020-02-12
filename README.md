@@ -34,6 +34,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_template_files` | ['alertmanager/templates/*.tmpl'] | List of folders where ansible will look for template files which will be copied to `{{ alertmanager_config_dir }}/templates/`. Files must have `*.tmpl` extension |
 | `alertmanager_resolve_timeout` | 3m | Time after which an alert is declared resolved |
 | `alertmanager_smtp` | {} | SMTP (email) configuration |
+| `alertmanager_http_config` | {} | Http config for using custom webhooks |
 | `alertmanager_slack_api_url` | "" | Slack webhook url |
 | `alertmanager_pagerduty_url` | "" | Pagerduty webhook url |
 | `alertmanager_opsgenie_api_key` | "" | Opsgenie webhook key |
