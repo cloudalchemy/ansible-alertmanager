@@ -93,5 +93,5 @@
 
 - name: Fail when child routes are defined not in proper place
   fail:
-    msg: "Please recofigure `alertmanager_route` a way in which child routes are placed in `alertmanager_child_routes`."
+    msg: "Please reconfigure `alertmanager_route` so that child routes are placed in `alertmanager_child_routes`."
   when: alertmanager_route.routes is defined
