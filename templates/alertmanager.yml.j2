@@ -10,6 +10,7 @@ global:
 {% endif %}
 {% if alertmanager_http_config | length %}
   http_config:
+    {{ alertmanager_http_config | to_nice_yaml(indent=2) | indent(4, False)}}
 {% endif %}
 {% for key, value in alertmanager_http_config.items() %}
     {{ key }}: {{ value | quote }}
