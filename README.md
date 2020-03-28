@@ -48,7 +48,6 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_receivers` | [] | A list of notification receivers. Configuration same as in [official docs](https://prometheus.io/docs/alerting/configuration/#<receiver>) |
 | `alertmanager_inhibit_rules` | [] | List of inhibition rules. Same as in [official docs](https://prometheus.io/docs/alerting/configuration/#inhibit_rule) |
 | `alertmanager_route` | {} | Alert routing. More in [official docs](https://prometheus.io/docs/alerting/configuration/#<route>) |
-| `alertmanager_child_routes` | [] | List of child routes. |
 
 ## Example
 

@@ -51,7 +51,3 @@ inhibit_rules:
 {% endif %}
 route:
   {{ alertmanager_route | to_nice_yaml(indent=2) | indent(2, False) }}
-{% if alertmanager_child_routes | length %}
-  routes:
-  {{ alertmanager_child_routes | to_nice_yaml(indent=2) | indent(2, False) }}
-{% endif %}
