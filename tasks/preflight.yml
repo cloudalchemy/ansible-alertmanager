@@ -71,58 +71,9 @@
     - alertmanager_config_file == 'alertmanager.yml.j2'
     - alertmanager_route == {}
 
-- name: "DEPRECATION WARNING: alertmanager version 0.15 and earlier are no longer supported and will be dropped from future releases"
-  ignore_errors: true
+- name: "alertmanager version 0.15 is no longer supported"
   fail:
-    msg: "Please use `alertmanager_version >= v0.16.0`"
-  when: alertmanager_version is version_compare('0.16.0', '<')
-
-- block:
-    - name: Backward compatibility of variable [part 1]
-      set_fact:
-        alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
-
-    - name: "DEPRECATION WARNING: `alertmanager_cli_flags` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
-      fail:
-        msg: "Please use `alertmanager_config_flags_extra` instead of `alertmanager_cli_flags`"
-  when: alertmanager_cli_flags is defined
-
-- block:
-    - name: Backward compatibility of variable [part 2]
-      set_fact:
-        alertmanager_web_listen_address: "{{ alertmanager_listen_address }}"
-
-    - name: "DEPRECATION WARNING: `alertmanager_listen_address` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
-      fail:
-        msg: "Please use `alertmanager_web_listen_address` instead of `alertmanager_listen_address`"
-  when: alertmanager_listen_address is defined
-
-- block:
-    - name: Backward compatibility of variable [part 3]
-      set_fact:
-        alertmanager_web_external_url: "{{ alertmanager_external_url }}"
-
-    - name: "DEPRECATION WARNING: `alertmanager_external_url` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
-      fail:
-        msg: "Please use `alertmanager_web_external_url` instead of `alertmanager_external_url`"
-  when: alertmanager_external_url is defined
-
-- block:
-    - name: HA config compatibility with alertmanager<0.15.0
-      set_fact:
-        alertmanager_cluster: "{{ alertmanager_mesh }}"
-
-    - name: "DEPRECATION WARNING: `alertmanager_mesh` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
-      fail:
-        msg: "Please use `alertmanager_cluster` instead of `alertmanager_cluster`"
-  when: alertmanager_mesh is defined
-
-- name: "DEPRECATION WARNING: `alertmanager_child_routes` is no longer supported and will be dropped from future releases"
-  ignore_errors: true
-  fail:
-    msg: "Please move content of `alertmanager_child_routes` to `alertmanager_route.routes` as the former variable is deprecated and will be removed in future versions."
-  when: alertmanager_child_routes is defined
+    msg: "If you want to use alertmanager 0.15.0 please use ansible role in version 0.17.1 or earlier."
+  when:
+    - alertmanager_version is version_compare('0.16.0', '<')
+    - alertmanager_binary_local_dir | length == 0

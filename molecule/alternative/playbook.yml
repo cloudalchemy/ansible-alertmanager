@@ -27,8 +27,7 @@
         - match_re:
             service: ^(foo1|foo2|baz)$
           receiver: slack
-    alertmanager_mesh:
-      listen-address: "127.0.0.1:6783"
-      peers:
-        - "127.0.0.1:6783"
-        - "demo.cloudalchemy.org:6783"
+    alertmanager_cluster:
+      - listen-address: "127.0.0.1:6783"
+      - peer: "127.0.0.1:6783"
+      - peer: "demo.cloudalchemy.org:6783"

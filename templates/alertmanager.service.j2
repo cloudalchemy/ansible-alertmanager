@@ -1,13 +1,3 @@
-{%- if alertmanager_version is version_compare('0.13.0', '>=') %}
-{%- set pre = '-' %}
-{%- else %}
-{%- set pre = '' %}
-{%- endif %}
-{%- if alertmanager_version is version_compare('0.15.0', '<') %}
-{%- set cluster_flag = 'mesh' %}
-{%- else %}
-{%- set cluster_flag = 'cluster' %}
-{%- endif %}
 {{ ansible_managed | comment }}
 [Unit]
 Description=Prometheus Alertmanager
@@ -22,20 +12,16 @@ User=alertmanager
 Group=alertmanager
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/alertmanager \
-{% for option, value in (alertmanager_cluster.items() | sort) %}
-{%   if option == "peers" %}
-{%     for peer in value %}
-  {{ pre }}-{{ cluster_flag }}.peer={{ peer }} \
-{%     endfor %}
-{%   else %}
-  {{ pre }}-{{ cluster_flag }}.{{ option }}={{ value }} \
-{%   endif %}
+{% for option in alertmanager_cluster %}
+{%   for key, value in option.items() %}
+  --cluster.{{ key }}={{ value }} \
+{%   endfor %}
 {% endfor %}
-  {{ pre }}-config.file={{ alertmanager_config_dir }}/alertmanager.yml \
-  {{ pre }}-storage.path={{ alertmanager_db_dir }} \
-  {{ pre }}-web.listen-address={{ alertmanager_web_listen_address }} \
-  {{ pre }}-web.external-url={{ alertmanager_web_external_url }}{% for flag, flag_value in alertmanager_config_flags_extra.items() %} \
-  {{ pre }}-{{ flag }}={{ flag_value }}{% endfor %}
+  --config.file={{ alertmanager_config_dir }}/alertmanager.yml \
+  --storage.path={{ alertmanager_db_dir }} \
+  --web.listen-address={{ alertmanager_web_listen_address }} \
+  --web.external-url={{ alertmanager_web_external_url }}{% for flag, flag_value in alertmanager_config_flags_extra.items() %} \
+  --{{ flag }}={{ flag_value }}{% endfor %}
 
 SyslogIdentifier=alertmanager
 Restart=always
