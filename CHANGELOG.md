@@ -1,5 +1,26 @@
 # Change Log
 
+## [0.17.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-03-29)
+**Implemented enhancements:**
+
+- Http config unable to set basic auth [\#115](https://github.com/cloudalchemy/ansible-alertmanager/issues/115)
+
+**Fixed bugs:**
+
+- binary checksum seems broken [\#117](https://github.com/cloudalchemy/ansible-alertmanager/issues/117)
+- "No package policycoreutils-python available." [\#111](https://github.com/cloudalchemy/ansible-alertmanager/issues/111)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] lock molecule to v2 [\#118](https://github.com/cloudalchemy/ansible-alertmanager/pull/118) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Modify http\_config to handle basic auth [\#116](https://github.com/cloudalchemy/ansible-alertmanager/pull/116) ([mcsammac](https://github.com/mcsammac))
+- Corrected typo on preflight check [\#114](https://github.com/cloudalchemy/ansible-alertmanager/pull/114) ([WilliamBriot](https://github.com/WilliamBriot))
+- Flush handlers after configuration [\#113](https://github.com/cloudalchemy/ansible-alertmanager/pull/113) ([jstaffans](https://github.com/jstaffans))
+- move installing selinux package dependencies into separate tasks [\#112](https://github.com/cloudalchemy/ansible-alertmanager/pull/112) ([wikro](https://github.com/wikro))
+- \[REPO SYNC\] Merge pull request \#4 from cloudalchemy/travis\_fix [\#110](https://github.com/cloudalchemy/ansible-alertmanager/pull/110) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] use latest available python [\#109](https://github.com/cloudalchemy/ansible-alertmanager/pull/109) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Remove alertmanager\_child\_routes [\#101](https://github.com/cloudalchemy/ansible-alertmanager/pull/101) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.16.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-01-11)
 **Implemented enhancements:**
 
