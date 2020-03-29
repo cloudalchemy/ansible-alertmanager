@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.17.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-03-29)
+**Merged pull requests:**
+
+- add deprecation warnings [\#120](https://github.com/cloudalchemy/ansible-alertmanager/pull/120) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.17.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-03-29)
 **Implemented enhancements:**
 
@@ -320,8 +325,8 @@
 ## [0.2.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-21)
 ## [0.1.6](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
 ## [0.1.5](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-12)
-## [0.1.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
 ## [0.1.4](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
+## [0.1.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-10)
 ## [0.1.2](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-07-03)
 ## [0.1.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-06-14)
 ## [0.1.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2017-06-06)
