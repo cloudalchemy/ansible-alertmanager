@@ -12,9 +12,6 @@ global:
   http_config:
     {{ alertmanager_http_config | to_nice_yaml(indent=2) | indent(4, False)}}
 {% endif %}
-{% for key, value in alertmanager_http_config.items() %}
-    {{ key }}: {{ value | quote }}
-{% endfor %}
 {% if alertmanager_pagerduty_url | length %}
   pagerduty_url: {{ alertmanager_pagerduty_url | quote }}
 {% endif %}
