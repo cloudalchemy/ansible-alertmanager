@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.17.2](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-04-24)
+**Fixed bugs:**
+
+- Fixed alertmanager\_http\_config setting failing deploy [\#122](https://github.com/cloudalchemy/ansible-alertmanager/pull/122) ([graudeejs](https://github.com/graudeejs))
+
 ## [0.17.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-03-29)
 **Merged pull requests:**
 
