@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- Support encrypted variables in Alertmanager template file [\#124](https://github.com/cloudalchemy/ansible-alertmanager/pull/124) ([nikosmeds](https://github.com/nikosmeds))
+
 ## [0.17.2](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-04-24)
 **Fixed bugs:**
 
