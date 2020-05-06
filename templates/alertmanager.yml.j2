@@ -5,35 +5,35 @@ global:
 {% for key, value in alertmanager_smtp.items() %}
   smtp_{{ key }}: {{ value | quote }}
 {% endfor %}
-{% if alertmanager_slack_api_url | length %}
+{% if alertmanager_slack_api_url | string | length %}
   slack_api_url: {{ alertmanager_slack_api_url | quote }}
 {% endif %}
 {% if alertmanager_http_config | length %}
   http_config:
     {{ alertmanager_http_config | to_nice_yaml(indent=2) | indent(4, False)}}
 {% endif %}
-{% if alertmanager_pagerduty_url | length %}
+{% if alertmanager_pagerduty_url | string | length %}
   pagerduty_url: {{ alertmanager_pagerduty_url | quote }}
 {% endif %}
-{% if alertmanager_opsgenie_api_key | length %}
+{% if alertmanager_opsgenie_api_key | string | length %}
   opsgenie_api_key: {{ alertmanager_opsgenie_api_key | quote }}
 {% endif %}
-{% if alertmanager_opsgenie_api_url | length %}
+{% if alertmanager_opsgenie_api_url | string | length %}
   opsgenie_api_url: {{ alertmanager_opsgenie_api_url | quote }}
 {% endif %}
-{% if alertmanager_hipchat_api_url | length %}
+{% if alertmanager_hipchat_api_url | string | length %}
   hipchat_api_url: {{ alertmanager_hipchat_api_url | quote }}
 {% endif %}
-{% if alertmanager_hipchat_auth_token | length %}
+{% if alertmanager_hipchat_auth_token | string | length %}
   hipchat_auth_token: {{ alertmanager_hipchat_auth_token | quote }}
 {% endif %}
-{% if alertmanager_wechat_url | length %}
+{% if alertmanager_wechat_url | string | length %}
   wechat_api_url: {{ alertmanager_wechat_url | quote }}
 {% endif %}
-{% if alertmanager_wechat_secret | length %}
+{% if alertmanager_wechat_secret | string | length %}
   wechat_api_secret: {{ alertmanager_wechat_secret | quote }}
 {% endif %}
-{% if alertmanager_wechat_corp_id | length %}
+{% if alertmanager_wechat_corp_id | string | length %}
   wechat_api_corp_id: {{ alertmanager_wechat_corp_id | quote }}
 {% endif %}
 templates:
