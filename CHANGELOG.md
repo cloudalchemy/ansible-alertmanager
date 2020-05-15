@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- adds option to change install dir [\#126](https://github.com/cloudalchemy/ansible-alertmanager/pull/126) ([wookietreiber](https://github.com/wookietreiber))
 - Support encrypted variables in Alertmanager template file [\#124](https://github.com/cloudalchemy/ansible-alertmanager/pull/124) ([nikosmeds](https://github.com/nikosmeds))
 
 ## [0.17.2](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-04-24)
