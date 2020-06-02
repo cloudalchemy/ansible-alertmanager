@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] Add passlib as a test requirement [\#128](https://github.com/cloudalchemy/ansible-alertmanager/pull/128) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - adds option to change install dir [\#126](https://github.com/cloudalchemy/ansible-alertmanager/pull/126) ([wookietreiber](https://github.com/wookietreiber))
 - Support encrypted variables in Alertmanager template file [\#124](https://github.com/cloudalchemy/ansible-alertmanager/pull/124) ([nikosmeds](https://github.com/nikosmeds))
 
