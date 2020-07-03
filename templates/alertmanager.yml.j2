@@ -21,6 +21,12 @@ global:
 {% if alertmanager_opsgenie_api_url | string | length %}
   opsgenie_api_url: {{ alertmanager_opsgenie_api_url | quote }}
 {% endif %}
+{% if alertmanager_victorops_api_key | string | length %}
+  victorops_api_key: {{ alertmanager_victorops_api_key | quote }}
+{% endif %}
+{% if alertmanager_victorops_api_url | string | length %}
+  victorops_api_url: {{ alertmanager_victorops_api_url | quote }}
+{% endif %}
 {% if alertmanager_hipchat_api_url | string | length %}
   hipchat_api_url: {{ alertmanager_hipchat_api_url | quote }}
 {% endif %}
