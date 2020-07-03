@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.18.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-07-03)
+**Merged pull requests:**
+
+- Add VictorOps configuration options [\#133](https://github.com/cloudalchemy/ansible-alertmanager/pull/133) ([bartoszcisek](https://github.com/bartoszcisek))
+
 ## [0.17.3](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-06-17)
 **Merged pull requests:**
 
