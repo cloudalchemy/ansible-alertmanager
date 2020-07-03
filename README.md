@@ -39,6 +39,8 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `alertmanager_pagerduty_url` | "" | Pagerduty webhook url |
 | `alertmanager_opsgenie_api_key` | "" | Opsgenie webhook key |
 | `alertmanager_opsgenie_api_url` | "" | Opsgenie webhook url |
+| `alertmanager_victorops_api_key` | "" | VictorOps webhook key |
+| `alertmanager_victorops_api_url` | "" | VictorOps webhook url |
 | `alertmanager_hipchat_api_url` | "" | Hipchat webhook url |
 | `alertmanager_hipchat_auth_token` | "" | Hipchat authentication token |
 | `alertmanager_wechat_url` | "" | Enterprise WeChat webhook url |
