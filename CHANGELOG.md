@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Merged pull requests:**
+
+- Fix: fail on alertmanager\_child\_routes [\#134](https://github.com/cloudalchemy/ansible-alertmanager/pull/134) ([till](https://github.com/till))
+
 ## [0.18.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-07-03)
 **Merged pull requests:**
 
