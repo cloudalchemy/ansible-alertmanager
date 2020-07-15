@@ -1,4 +1,13 @@
 ---
+- name: copy amtool config
+  template:
+    force: true
+    src: "{{ alertmanager_amtool_config_file }}"
+    dest: "{{ _alertmanager_amtool_config_dir }}/config.yml"
+    owner: alertmanager
+    group: alertmanager
+    mode: 0644
+
 - name: copy alertmanager config
   template:
     force: true
@@ -7,7 +16,7 @@
     owner: alertmanager
     group: alertmanager
     mode: 0644
-    validate: "{{ _alertmanager_binary_install_dir }}/amtool --alertmanager.url=  check-config %s"
+    validate: "{{ _alertmanager_binary_install_dir }}/amtool check-config %s"
   notify:
     - restart alertmanager
 

@@ -113,3 +113,12 @@ alertmanager_route: {}
 #         - match:
 #             owner: team-Y
 #           receiver: team-Y-pager
+
+# The template for amtool's configuration
+alertmanager_amtool_config_file: 'amtool.yml.j2'
+
+# Location (URL) of the alertmanager
+alertmanager_amtool_config_alertmanager_url: "{{ alertmanager_web_external_url }}"
+
+# Extended output of `amtool` commands, use '' for less verbosity
+alertmanager_amtool_config_output: 'extended'
