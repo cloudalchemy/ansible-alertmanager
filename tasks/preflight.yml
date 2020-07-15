@@ -121,8 +121,7 @@
         msg: "Please use `alertmanager_cluster` instead of `alertmanager_cluster`"
   when: alertmanager_mesh is defined
 
-- name: "DEPRECATION WARNING: `alertmanager_child_routes` is no longer supported and will be dropped from future releases"
-  ignore_errors: true
+- name: "`alertmanager_child_routes` is no longer supported"
   fail:
     msg: "Please move content of `alertmanager_child_routes` to `alertmanager_route.routes` as the former variable is deprecated and will be removed in future versions."
   when: alertmanager_child_routes is defined
