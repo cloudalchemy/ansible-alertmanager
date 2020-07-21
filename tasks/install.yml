@@ -24,6 +24,7 @@
     - "{{ alertmanager_config_dir }}"
     - "{{ alertmanager_config_dir }}/templates"
     - "{{ alertmanager_db_dir }}"
+    - "{{ _alertmanager_amtool_config_dir }}"
 
 - block:
     - name: download alertmanager binary to local folder
