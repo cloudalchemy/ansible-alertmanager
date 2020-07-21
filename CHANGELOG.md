@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
-
+## [0.19.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-07-21)
 **Merged pull requests:**
 
+- Add amtool configuration on alertmanager host [\#135](https://github.com/cloudalchemy/ansible-alertmanager/pull/135) ([till](https://github.com/till))
 - Fix: fail on alertmanager\_child\_routes [\#134](https://github.com/cloudalchemy/ansible-alertmanager/pull/134) ([till](https://github.com/till))
 
 ## [0.18.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-07-03)
