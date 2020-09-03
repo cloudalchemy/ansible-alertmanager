@@ -59,9 +59,24 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 ### Playbook
 
 ```yaml
-- hosts: all
+---
+  hosts: all
   roles:
-    - cloudalchemy.alertmanager
+    - ansible-alertmanager
+  vars:
+    alertmanager_version: latest
+    alertmanager_slack_api_url: "http://example.com"
+    alertmanager_receivers:
+      - name: slack
+        slack_configs:
+          - send_resolved: true
+            channel: '#alerts'
+    alertmanager_route:
+      group_by: ['alertname', 'cluster', 'service']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 3h
+      receiver: slack
 ```
 
 ### Demo site
