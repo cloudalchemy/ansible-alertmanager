@@ -1,5 +1,21 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
+
+**Fixed bugs:**
+
+- var name docu mismatch alertmanager\_binaries\_local\_dir  [\#130](https://github.com/cloudalchemy/ansible-alertmanager/issues/130)
+
+**Merged pull requests:**
+
+- README.md: Add a basic working playbook example [\#136](https://github.com/cloudalchemy/ansible-alertmanager/pull/136) ([bryanasdev000](https://github.com/bryanasdev000))
+
+## [0.19.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-09-03)
+**Merged pull requests:**
+
+- Fix lint errors [\#138](https://github.com/cloudalchemy/ansible-alertmanager/pull/138) ([SuperQ](https://github.com/SuperQ))
+- Fix typo in README.md [\#137](https://github.com/cloudalchemy/ansible-alertmanager/pull/137) ([S3RK](https://github.com/S3RK))
+
 ## [0.19.0](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-07-21)
 **Merged pull requests:**
 
