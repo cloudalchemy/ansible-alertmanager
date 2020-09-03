@@ -2,6 +2,10 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/alertmanager)
 
+**Implemented enhancements:**
+
+- Add on README.md example playbook that alertmanager\_route and alertmanager\_receivers is needed [\#132](https://github.com/cloudalchemy/ansible-alertmanager/issues/132)
+
 **Fixed bugs:**
 
 - var name docu mismatch alertmanager\_binaries\_local\_dir  [\#130](https://github.com/cloudalchemy/ansible-alertmanager/issues/130)
