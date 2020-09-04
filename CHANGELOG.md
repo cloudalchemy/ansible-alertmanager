@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] add troubleshooting doc skeleton [\#139](https://github.com/cloudalchemy/ansible-alertmanager/pull/139) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - README.md: Add a basic working playbook example [\#136](https://github.com/cloudalchemy/ansible-alertmanager/pull/136) ([bryanasdev000](https://github.com/bryanasdev000))
 
 ## [0.19.1](https://galaxy.ansible.com/cloudalchemy/alertmanager) (2020-09-03)
