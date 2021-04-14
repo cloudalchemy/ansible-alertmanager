@@ -38,13 +38,20 @@
     - alertmanager_version == "latest"
     - alertmanager_binary_local_dir | length == 0
 
-- name: "Get checksum for {{ go_arch }} architecture"
-  set_fact:
-    alertmanager_checksum: "{{ item.split(' ')[0] }}"
-  with_items:
-    - "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list }}"
+- block:
+    - name: Get checksum list
+      set_fact:
+        __alertmanager_checksums: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list }}"
+      run_once: true
+
+    - name: "Get checksum for {{ go_arch }} architecture"
+      set_fact:
+        alertmanager_checksum: "{{ item.split(' ')[0] }}"
+      with_items: "{{ __alertmanager_checksums }}"
+      when:
+        - "('linux-' + go_arch + '.tar.gz') in item"
+  delegate_to: localhost
   when:
-    - "('linux-' + go_arch + '.tar.gz') in item"
     - alertmanager_binary_local_dir | length == 0
 
 - name: Fail when extra config flags are duplicating ansible variables
