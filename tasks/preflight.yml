@@ -41,8 +41,10 @@
 
 - name: "Get checksum for {{ go_arch }} architecture"
   set_fact:
-    alertmanager_checksum: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list \
-                              select('contains', 'linux-' + go_arch + '.tar.gz') | list | first).split(' ')[0] }}"
+    alertmanager_checksum: "{{ (lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list | \
+                              select('contains', 'linux-' + go_arch + '.tar.gz') | list | first ).split(' ')[0] }}"
+
+
   when:
     - alertmanager_binary_local_dir | length == 0
   ignore_errors: true
