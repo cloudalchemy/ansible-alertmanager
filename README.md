@@ -62,7 +62,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 ---
   hosts: all
   roles:
-    - ansible-alertmanager
+    - cloudalchemy.alertmanager
   vars:
     alertmanager_version: latest
     alertmanager_slack_api_url: "http://example.com"
