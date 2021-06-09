@@ -114,6 +114,22 @@ alertmanager_route: {}
 #             owner: team-Y
 #           receiver: team-Y-pager
 
+alertmanager_mute_time_intervals: {}
+# A list of mute time intervals for muting routes.
+# - name:
+#   time_intervals:
+#   - times:
+#     [ - <time_range> ...]
+#     weekdays:
+#     [ - <weekday_range> ...]
+#     days_of_month:
+#     [ - <days_of_month_range> ...]
+#     months:
+#     [ - <month_range> ...]
+#     years:
+#     [ - <year_range> ...]
+
+
 # The template for amtool's configuration
 alertmanager_amtool_config_file: 'amtool.yml.j2'
 
