@@ -129,9 +129,9 @@
         alertmanager_cluster: "{{ alertmanager_mesh }}"
 
     - name: "DEPRECATION WARNING: `alertmanager_mesh` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
       fail:
         msg: "Please use `alertmanager_cluster` instead of `alertmanager_cluster`"
+      failed_when: "alertmanager is defined"
   when: alertmanager_mesh is defined
 
 - name: "`alertmanager_child_routes` is no longer supported"
