@@ -86,10 +86,9 @@
     - alertmanager_route == {}
 
 - name: "DEPRECATION WARNING: alertmanager version 0.15 and earlier are no longer supported and will be dropped from future releases"
-  ignore_errors: true
   fail:
     msg: "Please use `alertmanager_version >= v0.16.0`"
-  when: alertmanager_version is version_compare('0.16.0', '<')
+  failed_when: "alertmanager_version is version_compare('0.16.0', '<')"
 
 - block:
     - name: Backward compatibility of variable [part 1]
