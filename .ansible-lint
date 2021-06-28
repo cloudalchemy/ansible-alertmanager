@@ -1,16 +1,4 @@
 ---
-name: Ansible Lint
-
-jobs:
-  build:
-    steps:
-    - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@v5.0.12
-      with:
-        override-deps: |
-          ansible==2.10
-          ansible-lint==5.0.12
-
 skip_list:
   - '106'
   - '204'
