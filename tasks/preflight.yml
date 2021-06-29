@@ -96,9 +96,9 @@
         alertmanager_config_flags_extra: "{{ alertmanager_cli_flags }}"
 
     - name: "DEPRECATION WARNING: `alertmanager_cli_flags` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
       fail:
         msg: "Please use `alertmanager_config_flags_extra` instead of `alertmanager_cli_flags`"
+      failed_when: alertmanager_cli_flags is defined
   when: alertmanager_cli_flags is defined
 
 - block:
@@ -107,9 +107,9 @@
         alertmanager_web_listen_address: "{{ alertmanager_listen_address }}"
 
     - name: "DEPRECATION WARNING: `alertmanager_listen_address` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
       fail:
         msg: "Please use `alertmanager_web_listen_address` instead of `alertmanager_listen_address`"
+      failed_when: alertmanager_listen_address is defined
   when: alertmanager_listen_address is defined
 
 - block:
@@ -118,9 +118,9 @@
         alertmanager_web_external_url: "{{ alertmanager_external_url }}"
 
     - name: "DEPRECATION WARNING: `alertmanager_external_url` is no longer supported and will be dropped from future releases"
-      ignore_errors: true
       fail:
         msg: "Please use `alertmanager_web_external_url` instead of `alertmanager_external_url`"
+      failed_when: alertmanager_external_url is defined
   when: alertmanager_external_url is defined
 
 - block:
@@ -131,10 +131,10 @@
     - name: "DEPRECATION WARNING: `alertmanager_mesh` is no longer supported and will be dropped from future releases"
       fail:
         msg: "Please use `alertmanager_cluster` instead of `alertmanager_cluster`"
-      failed_when: "alertmanager is defined"
+      failed_when: alertmanager is defined
   when: alertmanager_mesh is defined
 
 - name: "`alertmanager_child_routes` is no longer supported"
   fail:
     msg: "Please move content of `alertmanager_child_routes` to `alertmanager_route.routes` as the former variable is deprecated and will be removed in future versions."
-  when: alertmanager_child_routes is defined
+  failed_when: alertmanager_child_routes is defined
