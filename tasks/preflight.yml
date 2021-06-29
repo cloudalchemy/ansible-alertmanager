@@ -55,11 +55,6 @@
   when:
     - alertmanager_binary_local_dir | length == 0
 
-- name: Checksum lookup error message
-  fail:
-    msg: "Could not find a checksum for 'linux-{{ go_arch }}.tar.gz' in '{{ alertmanager_checksum_url }}'"
-  when: __alertmanager_checksums is failed
-
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
     msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
