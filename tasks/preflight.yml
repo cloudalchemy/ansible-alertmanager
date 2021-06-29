@@ -54,13 +54,11 @@
   delegate_to: localhost
   when:
     - alertmanager_binary_local_dir | length == 0
-  ignore_errors: true
-  register: alertmanager_checksum_lookup
 
 - name: Checksum lookup error message
   fail:
     msg: "Could not find a checksum for 'linux-{{ go_arch }}.tar.gz' in '{{ alertmanager_checksum_url }}'"
-  when: alertmanager_checksum_lookup is failed
+  when: __alertmanager_checksums is failed
 
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
