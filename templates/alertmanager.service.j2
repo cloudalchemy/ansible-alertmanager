@@ -61,5 +61,8 @@ ProtectSystem=strict
 ProtectSystem=full
 {% endif %}
 
+LimitNOFILE=65536
+LimitNOFILESoft=65536
+
 [Install]
 WantedBy=multi-user.target
