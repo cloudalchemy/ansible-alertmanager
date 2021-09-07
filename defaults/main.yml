@@ -122,3 +122,25 @@ alertmanager_amtool_config_alertmanager_url: "{{ alertmanager_web_external_url }
 
 # Extended output of `amtool` commands, use '' for less verbosity
 alertmanager_amtool_config_output: 'extended'
+
+# Default values you can see here ->  https://prometheus.io/docs/alerting/latest/configuration/#mute_time_interval
+alertmanager_mute_time_intervals: []
+
+# alertmanager_route:
+#  receiver: team-X-pager
+#  routes:
+#    - matchers: [ '{severity!="critical",environment!="prod"}' ]
+#      receiver: team-X-mails
+#      mute_time_intervals: [out-of-business-hours]
+
+# mute_time_intervals:
+#   - name: out-of-business-hours
+#     time_intervals:
+#      # Mute on Saturdays and Sundays, all day.
+#      - weekdays: ['Saturday','Sunday']
+#      # Mute in the morning and in the evening, any day.
+#      - times:
+#        - start_time: '00:00'
+#          end_time: '08:00'
+#        - start_time: '18:00'
+#          end_time: '24:00'

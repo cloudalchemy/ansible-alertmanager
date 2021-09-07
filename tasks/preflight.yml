@@ -34,19 +34,21 @@
     - name: "Set alertmanager version to {{ _latest_release.json.tag_name[1:] }}"
       set_fact:
         alertmanager_version: "{{ _latest_release.json.tag_name[1:] }}"
-        alertmanager_checksum_url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/sha256sums.txt"
   when:
     - alertmanager_version == "latest"
     - alertmanager_binary_local_dir | length == 0
 
+- name: "Generate checksum url with selected version"
+  set_fact: 
+    alertmanager_checksum_url: "https://github.com/prometheus/alertmanager/releases/download/v{{ _latest_release.json.tag_name[1:] }}/sha256sums.txt"
+
 - name: "Get checksum for {{ go_arch }} architecture"
   set_fact:
-    alertmanager_checksum: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list \
-                              select('contains', 'linux-' + go_arch + '.tar.gz') | list | first).split(' ')[0] }}"
+    alertmanager_checksum: "{{ (lookup('url', alertmanager_checksum_url, wantlist=True) | list | select('contains', 'linux-' + go_arch + '.tar.gz') | list | first).split(' ')[0] }}"
   when:
     - alertmanager_binary_local_dir | length == 0
   ignore_errors: true
-  register: alertmanager_checksum_lookup
+  register: alertmanager_checksum_lookup 
 
 - name: Checksum lookup error message
   fail:
