@@ -39,19 +39,41 @@
     - alertmanager_version == "latest"
     - alertmanager_binary_local_dir | length == 0
 
-- name: "Get checksum for {{ go_arch }} architecture"
-  set_fact:
-    alertmanager_checksum: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list \
-                              select('contains', 'linux-' + go_arch + '.tar.gz') | list | first).split(' ')[0] }}"
+- block:
+    - name: "Get full checksum list"
+      uri:
+        url: "{{ 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt' }}"
+        method: GET
+        return_content: true
+        status_code: 200
+        validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+        #no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+      register: _checksum_full_list
+      until: _checksum_full_list.status == 200
+      retries: 5
+      run_once: true
+
+    - name: "Get checksum list"
+      set_fact:
+        __alertmanager_checksums: "{{ _checksum_full_list.content.split('\n') }}"
+      run_once: true
+
+    - name: "Get checksum for {{ go_arch }} architecture"
+      set_fact:
+        alertmanager_checksum: "{{ ( __alertmanager_checksums | select('contains', 'linux-' + go_arch + '.tar.gz') | list | first ).split(' ')[0] }}"
+      run_once: true
+      ignore_errors: true
+      register: alertmanager_checksum_lookup
+
+    - name: Checksum lookup error message
+      fail:
+        msg: "Could not find a checksum for 'linux-{{ go_arch }}.tar.gz' in '{{ alertmanager_checksum_url }}'"
+      when: alertmanager_checksum_lookup is failed
+
   when:
     - alertmanager_binary_local_dir | length == 0
-  ignore_errors: true
-  register: alertmanager_checksum_lookup
-
-- name: Checksum lookup error message
-  fail:
-    msg: "Could not find a checksum for 'linux-{{ go_arch }}.tar.gz' in '{{ alertmanager_checksum_url }}'"
-  when: alertmanager_checksum_lookup is failed
 
 - name: Fail when extra config flags are duplicating ansible variables
   fail:
