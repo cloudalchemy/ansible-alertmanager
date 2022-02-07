@@ -39,19 +39,22 @@
     - alertmanager_version == "latest"
     - alertmanager_binary_local_dir | length == 0
 
-- name: "Get checksum for {{ go_arch }} architecture"
-  set_fact:
-    alertmanager_checksum: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list \
-                              select('contains', 'linux-' + go_arch + '.tar.gz') | list | first).split(' ')[0] }}"
+- block:
+    - name: "Get checksum list"
+      set_fact:
+        __alertmanager_checksums: "{{ lookup('url', 'https://github.com/prometheus/alertmanager/releases/download/v' + alertmanager_version + '/sha256sums.txt', wantlist=True) | list }}"
+      run_once: true
+
+    - name: "Get checksum for {{ go_arch }} architecture"
+      set_fact:
+        __alertmanager_checksum: "{{ item.split(' ')[0] }}"
+      with_items: "{{ __alertmanager_checksums }}"
+      when:
+        - "('linux-' + go_arch + '.tar.gz') in item"
+  delegate_to: localhost
   when:
     - alertmanager_binary_local_dir | length == 0
-  ignore_errors: true
-  register: alertmanager_checksum_lookup
 
-- name: Checksum lookup error message
-  fail:
-    msg: "Could not find a checksum for 'linux-{{ go_arch }}.tar.gz' in '{{ alertmanager_checksum_url }}'"
-  when: alertmanager_checksum_lookup is failed
 
 - name: Fail when extra config flags are duplicating ansible variables
   fail:

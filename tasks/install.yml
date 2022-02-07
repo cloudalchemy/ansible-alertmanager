@@ -32,7 +32,7 @@
       get_url:
         url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
         dest: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
-        checksum: "sha256:{{ alertmanager_checksum }}"
+        checksum: "sha256:{{ __alertmanager_checksum }}"
       register: _download_archive
       until: _download_archive is succeeded
       retries: 5
