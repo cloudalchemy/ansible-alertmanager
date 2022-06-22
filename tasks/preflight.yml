@@ -38,6 +38,7 @@
   when:
     - alertmanager_version == "latest"
     - alertmanager_binary_local_dir | length == 0
+    - not alertmanager_skip_install
 
 - block:
     - name: "Get checksum list"
@@ -54,6 +55,7 @@
   delegate_to: localhost
   when:
     - alertmanager_binary_local_dir | length == 0
+    - not alertmanager_skip_install
 
 
 - name: Fail when extra config flags are duplicating ansible variables

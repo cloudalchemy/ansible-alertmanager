@@ -1,6 +1,7 @@
 ---
 alertmanager_version: 0.21.0
 alertmanager_binary_local_dir: ''
+alertmanager_skip_install: false
 
 alertmanager_config_dir: /etc/alertmanager
 alertmanager_db_dir: /var/lib/alertmanager
