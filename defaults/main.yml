@@ -12,6 +12,8 @@ alertmanager_template_files:
 
 alertmanager_web_listen_address: '0.0.0.0:9093'
 alertmanager_web_external_url: 'http://localhost:9093/'
+# uncomment below to set a route prefix (--web.route-prefix)
+# alertmanager_web_route_prefix: '/'
 
 alertmanager_http_config: {}
 
