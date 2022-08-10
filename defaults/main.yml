@@ -1,5 +1,5 @@
 ---
-alertmanager_version: 0.21.0
+alertmanager_version: 0.24.0
 alertmanager_binary_local_dir: ''
 
 alertmanager_config_dir: /etc/alertmanager
