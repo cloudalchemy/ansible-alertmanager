@@ -1,9 +1,9 @@
-{%- if alertmanager_version is version_compare('0.13.0', '>=') %}
+{%- if __alertmanager_version is version_compare('0.13.0', '>=') %}
 {%- set pre = '-' %}
 {%- else %}
 {%- set pre = '' %}
 {%- endif %}
-{%- if alertmanager_version is version_compare('0.15.0', '<') %}
+{%- if __alertmanager_version is version_compare('0.15.0', '<') %}
 {%- set cluster_flag = 'mesh' %}
 {%- else %}
 {%- set cluster_flag = 'cluster' %}

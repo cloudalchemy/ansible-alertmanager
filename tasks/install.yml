@@ -30,8 +30,8 @@
     - name: download alertmanager binary to local folder
       become: false
       get_url:
-        url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
-        dest: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
+        url: "https://github.com/prometheus/alertmanager/releases/download/v{{ __alertmanager_version }}/alertmanager-{{ __alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
+        dest: "/tmp/alertmanager-{{ __alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ __alertmanager_checksum }}"
       register: _download_archive
       until: _download_archive is succeeded
@@ -44,16 +44,16 @@
     - name: unpack alertmanager binaries
       become: false
       unarchive:
-        src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
+        src: "/tmp/alertmanager-{{ __alertmanager_version }}.linux-{{ go_arch }}.tar.gz"
         dest: "/tmp"
         mode: 0755
-        creates: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}/alertmanager"
+        creates: "/tmp/alertmanager-{{ __alertmanager_version }}.linux-{{ go_arch }}/alertmanager"
       delegate_to: localhost
       check_mode: false
 
     - name: propagate official alertmanager and amtool binaries
       copy:
-        src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-{{ go_arch }}/{{ item }}"
+        src: "/tmp/alertmanager-{{ __alertmanager_version }}.linux-{{ go_arch }}/{{ item }}"
         dest: "{{ _alertmanager_binary_install_dir }}/{{ item }}"
         mode: 0755
         owner: root
