@@ -1,11 +1,11 @@
 ---
-- include: preflight.yml
+- import_tasks: preflight.yml
   tags:
     - alertmanager_install
     - alertmanager_configure
     - alertmanager_run
 
-- include: install.yml
+- import_tasks: install.yml
   become: true
   tags:
     - alertmanager_install
@@ -16,7 +16,7 @@
   tags:
     - alertmanager_configure
 
-- include: configure.yml
+- import_tasks: configure.yml
   become: true
   tags:
     - alertmanager_configure
