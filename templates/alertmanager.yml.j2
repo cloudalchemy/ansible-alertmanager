@@ -59,3 +59,8 @@ route:
 mute_time_intervals:
   {{ alertmanager_mute_time_intervals | to_nice_yaml(indent=2) | indent(2, False) }}
 {% endif %}
+
+{% if alertmanager_active_time_intervals %}
+active_time_intervals:
+  {{ alertmanager_active_time_intervals | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endif %}
