@@ -114,23 +114,8 @@ alertmanager_route: {}
 #             owner: team-Y
 #           receiver: team-Y-pager
 
-alertmanager_mute_time_intervals: {}
-# A list of mute time intervals for muting routes.
-# - name:
-#   time_intervals:
-#   - times:
-#     [ - <time_range> ...]
-#     weekdays:
-#     [ - <weekday_range> ...]
-#     days_of_month:
-#     [ - <days_of_month_range> ...]
-#     months:
-#     [ - <month_range> ...]
-#     years:
-#     [ - <year_range> ...]
-
-alertmanager_active_time_intervals: {}
-# A list of active time intervals when route should be active.
+alertmanager_time_intervals: {}
+# A list of time intervals.
 # - name:
 #   time_intervals:
 #   - times:

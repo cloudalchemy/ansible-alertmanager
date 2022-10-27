@@ -54,13 +54,8 @@ inhibit_rules:
 {% endif %}
 route:
   {{ alertmanager_route | to_nice_yaml(indent=2) | indent(2, False) }}
-
-{% if alertmanager_mute_time_intervals %}
-mute_time_intervals:
-  {{ alertmanager_mute_time_intervals | to_nice_yaml(indent=2) | indent(2, False) }}
+{% if alertmanager_time_intervals %}
+time_intervals:
+  {{ alertmanager_time_intervals | to_nice_yaml(indent=2) | indent(2, False) }}
 {% endif %}
 
-{% if alertmanager_active_time_intervals %}
-active_time_intervals:
-  {{ alertmanager_active_time_intervals | to_nice_yaml(indent=2) | indent(2, False) }}
-{% endif %}
