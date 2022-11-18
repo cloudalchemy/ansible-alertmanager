@@ -31,5 +31,5 @@
   tags:
     - alertmanager_run
 
-- name: Flush handlers
+- name: Flush alertmangaer handlers after run.
   meta: flush_handlers
